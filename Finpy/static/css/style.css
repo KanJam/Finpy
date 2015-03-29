@@ -1,0 +1,25 @@
+section#body{
+  width: 80%;margin: 0 auto;
+  margin: auto;
+  padding: 10px;
+  min-width: 700px;
+}
+
+div#sidebar{
+  background: lightgreen;
+  float: left;
+  width: 15%;
+  min-width: 150px;
+  min-height: 600px;
+  padding: 5px;
+}
+div#content{
+  background: lightyellow;
+  margin-left: 15%;
+  min-height: 600px;
+  padding: 10px;
+}
+div#container{
+  width: 80%;
+  margin: 0 auto;
+}
