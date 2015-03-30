@@ -1,0 +1,140 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-03-30 00:57-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: forms.py:12
+msgid "The two password fields didn't match."
+msgstr ""
+
+#: forms.py:14
+msgid "Password"
+msgstr ""
+
+#: forms.py:16
+msgid "Password confirmation"
+msgstr ""
+
+#: forms.py:18
+msgid "Enter the same password as above, for verification."
+msgstr ""
+
+#: models.py:29
+msgid "cpf"
+msgstr ""
+
+#: models.py:30
+msgid "Use format ???.???.???-??"
+msgstr ""
+
+#: models.py:32 models.py:37
+msgid "Wrong Format!"
+msgstr ""
+
+#: models.py:34
+msgid "rg"
+msgstr ""
+
+#: models.py:35
+msgid "Use format ?.???.???"
+msgstr ""
+
+#: models.py:40
+msgid "expeditor"
+msgstr ""
+
+#: models.py:41
+msgid "job_title"
+msgstr ""
+
+#: models.py:42
+msgid "organization"
+msgstr ""
+
+#: templates/Finpy/base.html:17
+msgid "Logged in as: "
+msgstr ""
+
+#: templates/Finpy/base.html:25 views.py:18
+msgid "Home"
+msgstr ""
+
+#: templates/Finpy/base.html:26
+msgid "Personal Data"
+msgstr ""
+
+#: templates/Finpy/base.html:28 templates/accounts/login.html:13
+#: templates/accounts/password_reset_complete.html:9
+msgid "Log in"
+msgstr ""
+
+#: templates/Finpy/base.html:29 templates/accounts/signup.html:13
+msgid "Signup"
+msgstr ""
+
+#: templates/Finpy/index.html:7
+msgid "Welcome!"
+msgstr ""
+
+#: templates/accounts/password_change_done.html:7
+msgid "Your password was changed."
+msgstr ""
+
+#: templates/accounts/password_reset_complete.html:7
+msgid "Your password has been set.  You may go ahead and log in now."
+msgstr ""
+
+#: templates/accounts/password_reset_confirm.html:10
+msgid ""
+"Please enter your new password twice so we can verify you typed it in "
+"correctly."
+msgstr ""
+
+#: templates/accounts/password_reset_confirm.html:17
+msgid "Change my password"
+msgstr ""
+
+#: templates/accounts/password_reset_confirm.html:25
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a new password reset."
+msgstr ""
+
+#: templates/accounts/password_reset_done.html:7
+msgid ""
+"We've emailed you instructions for setting your password. You should be "
+"receiving them shortly."
+msgstr ""
+
+#: templates/accounts/password_reset_done.html:9
+msgid ""
+"If you don't receive an email, please make sure you've entered the address "
+"you registered with, and check your spam folder."
+msgstr ""
+
+#: views.py:39
+msgid "User Profile Update"
+msgstr ""
+
+#: views.py:46
+msgid "This isn't your profile"
+msgstr ""
+
+#: views.py:67
+msgid "User Registration"
+msgstr ""
