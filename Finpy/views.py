@@ -14,8 +14,8 @@ from Finpy.forms import UserCreationForm, ProfileUpdateForm
 @login_required
 def index(request, template_name='Finpy/index.html'):
     context = {
-        'profile_id': UserProfile.objects.get(user=request.user).id,
-        'title': _('Index'),
+        'profile_id': request.user.userprofile.id,
+        'title': _('Home'),
     }
     return TemplateResponse(request, template_name, context)
 
@@ -43,7 +43,7 @@ def update_profile(request, profile_id=None, template_name='profile/update.html'
             return TemplateResponse(request, template_name, context,
                 current_app=current_app)
         else:
-            HttpResponse(_("This isn't your profile"))
+            return HttpResponse(_("This isn't your profile"))
 
 def signup(request, template_name='registration/signup.html',
     post_signup_redirect=None, signup_form=UserCreationForm,

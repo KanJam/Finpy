@@ -17,6 +17,15 @@ class Income(models.Model):
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
 
+    DF = 'DF'
+    MG = 'MG'
+    SP = 'SP'
+    STATES = (
+    (DF, 'DF'),
+    (MG, 'MG'),
+    (SP, 'SP'),
+    )
+
     cpf = models.CharField(_('cpf'),max_length=14,
         help_text=_('Use format ???.???.???-??'),
         validators=[
@@ -28,7 +37,10 @@ class UserProfile(models.Model):
                 validators.RegexValidator(r'^[0-9]{1}\.?[0-9]{3}\.?[0-9]{3}$',_('Wrong Format!'), 'invalid'),
         ], blank=True)
 
-    expeditor = models.CharField(_('expeditor'),max_length=2, blank=True)
+    expeditor = models.CharField(_('expeditor'),max_length=2, choices=STATES, default=DF, blank=True)
+    job_title = models.CharField(_('job_title'), max_length=150, blank=True)
+    organization = models.CharField(_('organization'), max_length=150, blank=True)
+
 
     def __str__(self):
         return self.user.username

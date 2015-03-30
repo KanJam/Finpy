@@ -4,20 +4,30 @@
 
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" media="all" href="/static/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" media="all" href="/static/css/style.css">
-    <script src="/static/js/bootstrap.min.js"></script>
+    {%bootstrap_css%}
+    {%bootstrap_javascript jquery=1%}
     <title>{% block title %}My amazing site{% endblock %}</title>
 </head>
 
 <body>
+  <div id="topbar">
+    <p class="left logo">Eq<font color="lightgreen">Libra</font></p>
+    {% if user.is_authenticated %}
+    <p class="right">{% trans 'Logged in as: '%}{{user}}! <a class="whitelink" href="{% url 'logout' %}">Logout</a></p>
+    {% endif %}
+  </div>
   <section id="body">
     <div id="sidebar">
         {% block sidebar %}
         <ul>
-            <li><a href="/finpy/">{% trans 'Home' %}</a></li>
-            <li><a href="/finpy/login/">{% trans 'Login' %}</a></li>
-            <li><a href="/finpy/signup/">{% trans 'Signup' %}</a></li>
+          {% if user.is_authenticated %}
+            <li><a class="whitelink" href="{% url 'index' %}">{% trans 'Home' %}</a></li>
+            <li><a class="whitelink" href="{% url 'update_profile' user.userprofile.id %}">{% trans 'Personal Data' %}</a></li>
+          {% else %}
+            <li><a class="whitelink" href="{% url 'login' %}">{% trans 'Log in' %}</a></li>
+            <li><a class="whitelink" href="{% url 'signup' %}">{% trans 'Signup' %}</a></li>
+          {% endif %}
         </ul>
         {% endblock %}
     </div>

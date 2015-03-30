@@ -68,8 +68,18 @@ DATABASES = {
         'NAME': 'kanjam',
         'USER': 'kanjam',
         'PASSWORD': 'root',
+        'HOST': '127.0.0.1',
         'PORT': '5432',
     }
+}
+
+LOCALE_PATHS = ('/Finpy/locale')
+
+BOOTSTRAP3 = {
+    'jquery_url': '/static/js/jquery.min.js',
+    'base_url': '/static/',
+    'css_url': '/static/css/bootstrap.min.css',
+    'javascript_url': '/static/js/bootstrap.min.js',
 }
 
 # Internationalization

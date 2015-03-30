@@ -1,6 +1,7 @@
 {% extends "Finpy/base.html" %}
 
 {% load bootstrap3 %}
+{% load i18n %}
 
 {% block content %}
 <div id="container">
@@ -9,7 +10,7 @@
   {% bootstrap_form form %}
   {% buttons %}
   <button type="submit" class="btn btn-primary">
-    {% bootstrap_icon "star" %} Submit
+    {% bootstrap_icon "star" %} {% trans 'Save'%}
   </button>
   {% endbuttons %}
 
