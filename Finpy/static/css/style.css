@@ -1,7 +1,6 @@
 section#body{
-  width: 80%;margin: 0 auto;
+  width:  90%;margin: 0 auto;
   margin: auto;
-  /*padding: 10px;*/
   min-width: 700px;
   clear: both;
 }
@@ -12,7 +11,7 @@ section#body{
 }
 
 .logo{
-  font-size: 50px;
+  font-size: 35px;
 }
 
 .right{
@@ -28,47 +27,87 @@ a.whitelink{
   font-weight: bold;
 }
 
+a.whitelink:hover{
+  color: #FF6;
+}
+
+a.mainlink{
+  color: #000;
+}
+
 div#topbar{
   font-weight: bold;
   text-shadow: 0px 0px 5px #000;
   color: white;
-  width: 85%;margin: 0 auto;
-  border: 0px solid #a1a1a1;
-  border-radius: 10px;
+  width: 90%;margin: 0 auto;
   text-align: center;
   vertical-align: middle;
-  height: 60px;
+  height: 50px;
   margin-top: 5px;
   padding-top: 1px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
   min-width: 720px;
   box-shadow: 2px 2px 2px #333;
   position: relative;
   line-height: 50px;
-  background: url("../images/b_steel_c1.jpg");
-  /*background: -webkit-linear-gradient(white, gray);
-  background: -o-linear-gradient(white, gray);
-  background: -moz-linear-gradient(white, gray);
-  background: linear-gradient(white, gray);
-  */
+  background: #6ec86e; /* Old browsers */
+  background: -moz-linear-gradient(top,  #6ec86e 0%, #8cd28c 99%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#6ec86e), color-stop(99%,#8cd28c)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #6ec86e 0%,#8cd28c 99%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #6ec86e 0%,#8cd28c 99%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #6ec86e 0%,#8cd28c 99%); /* IE10+ */
+  background: linear-gradient(to bottom,  #6ec86e 0%,#8cd28c 99%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6ec86e', endColorstr='#8cd28c',GradientType=0 ); /* IE6-9 */
+}
+
+div#bottombar{
+  font-weight: bold;
+  text-shadow: 0px 0px 5px #000;
+  color: white;
+  width: 90%;margin: 0 auto;
+  text-align: center;
+  vertical-align: middle;
+  height: 30px;
+  margin-top: 5px;
+  padding-top: 1px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-width: 720px;
+  box-shadow: 2px 2px 2px #333;
+  position: relative;
+  line-height: 30px;
+  background: #6e966e; /* Old browsers */
+  background: -moz-linear-gradient(top,  #6e966e 0%, #8c968c 99%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#6e966e), color-stop(99%,#8c968c)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #6e966e 0%,#8c968c 99%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #6e966e 0%,#8c968c 99%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #6e966e 0%,#8c968c 99%); /* IE10+ */
+  background: linear-gradient(to bottom,  #6e966e 0%,#8c968c 99%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6e966e', endColorstr='#8c968c',GradientType=0 ); /* IE6-9 */
 }
 
 div#sidebar{
-  background: orange;
   float: left;
-  width: 17%;
-  min-width: 150px;
+  background-color: #DFE5FF;
+  border-radius: 15px;
+  border-style: solid;
+  border-width: 1px;  
+  width: 15%;
   min-height: 600px;
-  padding: 5px;
+  padding: 20px;
 }
+
 div#content{
-  background: lightgray;
-  margin-left: 17%;
+  background: #FFF;
+  border-radius: 15px;
+  border-style: solid;
+  border-width: 1px;  
   min-height: 600px;
   padding: 10px;
 }
+
 div#container{
-  width: 80%;
+  width: 50%;
   margin: 0 auto;
 }
