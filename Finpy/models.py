@@ -11,21 +11,26 @@ class Periodicity(models.Model):
     """Classe responsavel por representar a periodicidade de uma receita/despesa"""
     """In Portuguese: Periodicidade"""
 
-    UNDEFINED = _('Undefined') #Indefinido
+    UNDEFINED = _('Undefined')
     DAILY = _('Daily') #Diario
     WEEKLY = _('Weekly') #Semanal
     MONTHLY = _('Monthly') #Mensal
 
     PERIODICITY = (
     (UNDEFINED, _('Undefined')),
-    (DAILY, _('Daily')), 
-    (WEEKLY, _('Weekly')), 
-    (MONTHLY, _('Monthly')), 
+    (DAILY, _('Daily')),
+    (WEEKLY, _('Weekly')),
+    (MONTHLY, _('Monthly')),
     )
 
     periodicityID = models.AutoField(_('Periodicity Identifier'), primary_key=True)
 
-    period = models.CharField(_('Period Type'), choices=PERIODICITY, default= UNDEFINED, max_length=20)
+    name = models.CharField(_('Name'), choices=PERIODICITY, max_length=20)
+
+    daysCount = models.IntegerField(_('Days count'), default = 30)
+
+    def __str__(self):
+        return self.name
 
 
 class CategoryRecord(models.Model):
@@ -33,23 +38,33 @@ class CategoryRecord(models.Model):
     """Classe responsavel por registrar uma categoria de receita e despesa"""
     """Class responsible for registering the registry of revenues and expenses"""
     """In Portuguese: Categoria de Lancamento"""
-    
+
     categoryID = models.AutoField(primary_key=True);
         #Primary Key of class. Automatically Generated
 
     nameCategory = models.CharField(_('Name Category'), max_length=30, blank=False)
-        #Name of category recorded    
+        #Name of category recorded
         #Name of category never should be blank
 
     descriptionCategory = models.TextField(_('Description Category'), max_length=150, blank=True)
         #Detail of category recorded
-        #Is not required    
+        #Is not required
 
+    def __str__(self):
+        return self.nameCategory
 
 class Entry(models.Model):
 
     """Classe responsavel por manter os dados em comuns de receitas e despesas"""
     """In Portuguese: Contabil"""
+
+    INCOME = _('Income')
+    EXPENSE = _('Expense')
+
+    OPTIONS = (
+    (INCOME, _('Income')),
+    (EXPENSE, _('Expense')),
+    )
 
     entryID = models.AutoField(_('Entry Identifier'), primary_key=True)
         #Chave primaria
@@ -71,18 +86,20 @@ class Entry(models.Model):
 
     entryQuotaAmount = models.IntegerField(_('Entry Quota Amount'), default=1)
         #Quantidade de parcelas
-        
+
+    entryType = models.CharField(_('Entry Type'), choices=OPTIONS, max_length=20)
+
     periodicity = models.ForeignKey(Periodicity)
         #Relacionamento de 1 pra n com Periodicidade
 
     user = models.ForeignKey(User)
-        #Relacionamento de 1 pra n com Usuario 
+        #Relacionamento de 1 pra n com Usuario
 
     category = models.ForeignKey(CategoryRecord)
         #Relacionamento de 1 pra n com Categoria de lancamento
 
-    def __str_(self):
-        return str(self.entryDescription)
+    def __str__(self):
+        return self.entryDescription
 
 
 class UserProfile(models.Model):
@@ -119,4 +136,3 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return self.user.username
-
