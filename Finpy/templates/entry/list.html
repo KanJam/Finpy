@@ -1,0 +1,18 @@
+{% extends "Finpy/base.html" %}
+
+{% load bootstrap3 %}
+{% load i18n %}
+
+{% block content %}
+<div id="container">
+{% for entry in entries %}
+  {% bootstrap_label entry.entrySource %} ---- {{entry.entryValue}}
+  ---- {{entry.entryType}}
+  <a href="{% url 'update_entry' entry.entryID %}" class="btn btn-primary">
+    {% bootstrap_icon "pencil" %} {% trans 'Edit' %}
+  </a>
+  <br>
+{% endfor %}
+
+</div>
+{% endblock %}
