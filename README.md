@@ -1,4 +1,4 @@
-> Heeey, brasileiro? Tem informações em português logo abaixo! Se quiser pegar um atalho, você pode [clicar aqui](Finpy#eqlibra---sistema-de-gerenciamento-financeiro)
+> Heeey, brasileiro? Tem informações em português logo abaixo! Se quiser pegar um atalho, você pode [clicar aqui](http://github.com/KanJam/Finpy#eqlibra---sistema-de-gerenciamento-financeiro)
 
 # EqLibra - Financial Management System
 =========================================
