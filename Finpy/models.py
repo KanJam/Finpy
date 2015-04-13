@@ -8,46 +8,94 @@ from django.contrib.auth.models import User
 
 class Periodicity(models.Model):
 
-    """Classe responsável por representar a periodicidade de uma receita/despesa"""
+    """Classe responsavel por representar a periodicidade de uma receita/despesa"""
     """In Portuguese: Periodicidade"""
 
-    DAILY = _('Daily') #Diário
+    UNDEFINED = _('Undefined') #Indefinido
+    DAILY = _('Daily') #Diario
     WEEKLY = _('Weekly') #Semanal
     MONTHLY = _('Monthly') #Mensal
 
-    periodicityID = models.AutoField(('Periodicity Identifier'), primary_key=True)
-    period = models.CharField(('Period Type'), choices=())
+    PERIODICITY = (
+    (UNDEFINED, _('Undefined')),
+    (DAILY, _('Daily')), 
+    (WEEKLY, _('Weekly')), 
+    (MONTHLY, _('Monthly')), 
+    )
 
-class Accounting(models.Model):
+    periodicityID = models.AutoField(_('Periodicity Identifier'), primary_key=True)
 
-    """Classe responsável por manter os dados em comuns de receitas e despesas"""
+    period = models.CharField(_('Period Type'), choices=PERIODICITY, default= UNDEFINED, max_length=20)
+
+
+class CategoryRecord(models.Model):
+
+    """Classe responsavel por registrar uma categoria de receita e despesa"""
+    """Class responsible for registering the registry of revenues and expenses"""
+    """In Portuguese: Categoria de Lancamento"""
+    
+    categoryID = models.AutoField(primary_key=True);
+        #Primary Key of class. Automatically Generated
+
+    nameCategory = models.CharField(_('Name Category'), max_length=30, blank=False)
+        #Name of category recorded    
+        #Name of category never should be blank
+
+    descriptionCategory = models.TextField(_('Description Category'), max_length=150, blank=True)
+        #Detail of category recorded
+        #Is not required    
+
+
+class Entry(models.Model):
+
+    """Classe responsavel por manter os dados em comuns de receitas e despesas"""
     """In Portuguese: Contabil"""
 
+    entryID = models.AutoField(_('Entry Identifier'), primary_key=True)
+        #Chave primaria
 
+    entryDueDate = models.DateField(_('Due Date'))
+        #Data de pagamento.
 
-class Income(models.Model):
+    entryRegistrationDate = models.DateField(_('Registration Date'))
+        #Date registration of accounting
 
-    """Classe que representa uma receita cadastrada pelo usuário"""
-    """In Portuguese: Receita"""
+    entryDescription = models.TextField(_('Entry Description'), max_length=150, blank=True)
+        #Descricao de uma contabil
 
-    incomeID = models.AutoField(('Income Identifier'), primary_key=True)
-    dueDate = models.DateField(('Due Date'), editable=True, blank=True)
-    salary = models.DecimalField('Salary', max_digits=10, decimal_places=2)
+    entryValue = models.DecimalField(_('Entry Value'), decimal_places=2, max_digits=12)
+        #Registro do valor do contabel
+
+    entrySource = models.CharField(_('Entry Source'), max_length=50, blank=True)
+        #Empresa/Organizacao/Entidade fonte da requisicao do contabil
+
+    entryQuotaAmount = models.IntegerField(_('Entry Quota Amount'), default=1)
+        #Quantidade de parcelas
+        
+    periodicity = models.ForeignKey(Periodicity)
+        #Relacionamento de 1 pra n com Periodicidade
+
+    user = models.ForeignKey(User)
+        #Relacionamento de 1 pra n com Usuario 
+
+    category = models.ForeignKey(CategoryRecord)
+        #Relacionamento de 1 pra n com Categoria de lancamento
 
     def __str_(self):
-        return str(self.income)
+        return str(self.entryDescription)
 
 
 class UserProfile(models.Model):
 
-    """Classe que representa o perfil de um usuário"""
-    """In Portuguese: Perfil de Usuário"""
+    """Classe que representa o perfil de um usuario"""
+    """In Portuguese: Perfil de Usuario"""
 
     user = models.OneToOneField(User)
 
     DF = 'DF'
     MG = 'MG'
     SP = 'SP'
+
     STATES = (
     (DF, 'DF'),
     (MG, 'MG'),
@@ -65,30 +113,10 @@ class UserProfile(models.Model):
                 validators.RegexValidator(r'^[0-9]{1}\.?[0-9]{3}\.?[0-9]{3}$',_('Wrong Format!'), 'invalid'),
         ], blank=True)
 
-    expeditor = models.CharField(_('expeditor'),max_length=2, choices=STATES, default=DF, blank=True)
-    job_title = models.CharField(_('job_title'), max_length=150, blank=True)
-    organization = models.CharField(_('organization'), max_length=150, blank=True)
-
+    expeditor = models.CharField(_('Expeditor'),max_length=2, choices=STATES, default=DF, blank=True)
+    job_title = models.CharField(_('Job Title'), max_length=150, blank=True)
+    organization = models.CharField(_('Organization'), max_length=150, blank=True)
 
     def __str__(self):
         return self.user.username
 
-class CategoryRecord(models.Model):
-
-    """Classe responsável por registrar uma categoria de receita e despesa"""
-    """Class responsible for registering the registry of revenues and expenses"""
-    """In Portuguese: Categoria de Lançamento"""
-    
-    codyCategory = models.AutoField(primary_key=True);
-        #Primary Key of class. Automatically Generated
-
-    nameCategory = models.CharField(_('nameCategory'), max_length=30, blank=False)
-        #Name of category recorded    
-        #Name of category never should be blank
-
-    pubDateCategory = models.DateTimeField('datePublishedCategory')
-        #Date of publication of category
-        
-    description = models.CharField(_('nameCategory'), max_length=150, blank=True)
-        #Detail of category recorded
-        #Is not required    
