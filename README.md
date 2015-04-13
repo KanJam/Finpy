@@ -1,3 +1,5 @@
+![EqLibra's Logo](http://i.imgur.com/BQbKBg8.png)
+
 > Heeey, brasileiro? Tem informações em português logo abaixo! Se quiser pegar um atalho, você pode [clicar aqui](http://github.com/KanJam/Finpy#eqlibra---sistema-de-gerenciamento-financeiro)
 
 # EqLibra - Financial Management System
