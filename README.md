@@ -1,3 +1,5 @@
+> Heeey, brasileiro? Tem informações em português logo abaixo! Se quiser pegar um atalho, você pode [clicar aqui](Finpy#eqlibra---sistema-de-gerenciamento-financeiro)
+
 # EqLibra - Financial Management System
 =========================================
 
@@ -5,39 +7,38 @@ Development project of a financial management system for obtaining curricular co
 
 ## Group members
 
-André Guedes
-
-Augusto Modesto
-
-Jonathan Henrique
-
-Matheus Ferraz
+|     **Name**     |   **GitHub**                                       |       **Contact**          |
+|------------------|:--------------------------------------------------:|:--------------------------:|
+|   André Guedes   | [@Kavospus](https://github.com/Kavospus)           | andrebsguedes@gmail.com    |
+| Augusto Modesto  | [@modestoo](https://github.com/modestoo)           | augusto.modestoo@gmail.com |
+| Jonathan Moraes  | [@arkye](https://github.com/arkye)                 | arkye@hotmail.com.br       |
+| Matheus Ferraz   | [@MatheusFerraz](https://github.com/MatheusFerraz) | matheus.herlan@gmail.com   |
 
 ## Installation and Project Execution
 
-**Django Installation Steps**
+### Django Installation Steps
 
-1 - Installing the pip - [sudo apt-get install python-pip]
+> 1 - Installing the pip - [sudo apt-get install python-pip]
 
-2 - Django specific version Installation - [sudo pip install Django == 1.7.7]
+> 2 - Django specific version Installation - [sudo pip install Django == 1.7.7]
 
-**Installation Steps and Database Configuration (PostgreSQL)**
+### Installation Steps and Database Configuration (PostgreSQL)
 
-1 - Install the latest version - [sudo apt-get install postgresql postgresql-contrib]
+> 1 - Install the latest version - [sudo apt-get install postgresql postgresql-contrib]
 
-2 - After installation, run the command: [sudo -i -u postgres]
+> 2 - After installation, run the command: [sudo -i -u postgres]
 
-3 - For user creation - [createuser -drlP kanjam]
+> 3 - For user creation - [createuser -drlP kanjam]
 
-4 - For management and database creation - [psql]
+> 4 - For management and database creation - [psql]
 
-5 - To create the application database - [create database kanjam with owner kanjam;]
+> 5 - To create the application database - [create database kanjam with owner kanjam;]
 
-**Installation of the other modules**
+### Installation of the other modules
 
-1 - Installing psycoepg2 - [sudo apt-get install python-psycopg2]
+> 1 - Installing psycoepg2 - [sudo apt-get install python-psycopg2]
 
-2 - Installation of bootstrap3 - [sudo pip install django-bootstrap3]
+> 2 - Installation of bootstrap3 - [sudo pip install django-bootstrap3]
 
 
 # EqLibra - Sistema de Gerenciamento Financeiro
@@ -47,36 +48,35 @@ Projeto de desenvolvimento de um sistema de gerenciamento financeiro para obten�
 
 ## Membros do grupo
 
-André Guedes
-
-Augusto Modesto
-
-Jonathan Henrique
-
-Matheus Ferraz
+|     **Nome**     |   **GitHub**                                       |       **Contato**          |
+|------------------|:--------------------------------------------------:|:--------------------------:|
+|   André Guedes   | [@Kavospus](https://github.com/Kavospus)           | andrebsguedes@gmail.com    |
+| Augusto Modesto  | [@modestoo](https://github.com/modestoo)           | augusto.modestoo@gmail.com |
+| Jonathan Moraes  | [@arkye](https://github.com/arkye)                 | arkye@hotmail.com.br       |
+| Matheus Ferraz   | [@MatheusFerraz](https://github.com/MatheusFerraz) | matheus.herlan@gmail.com   |
 
 ## Instalação e Execução do Projeto
 
-**Passos da Instalação do Django**
+### Passos da Instalação do Django
 
-1 - Instalação do pip -  [sudo apt-get install python-pip]
+> 1 - Instalação do pip -  [sudo apt-get install python-pip]
 
-2 - Instalação da versão específica do Django - [sudo pip install Django==1.7.7]
+> 2 - Instalação da versão específica do Django - [sudo pip install Django==1.7.7]
 
-**Passos da Instalação e Configuração do Banco de Dados (PostgreSQL)**
+### Passos da Instalação e Configuração do Banco de Dados (PostgreSQL)
 
-1 - Instalação da última versão - [sudo apt-get install postgresql postgresql-contrib]
+> 1 - Instalação da última versão - [sudo apt-get install postgresql postgresql-contrib]
 
-2 - Após instalação, execute o comando: [sudo -i -u postgres]
+> 2 - Após instalação, execute o comando: [sudo -i -u postgres]
 
-3 - Para criação do usuário - [createuser -drlP kanjam]
+> 3 - Para criação do usuário - [createuser -drlP kanjam]
 
-4 - Para gerenciamento e criação do banco - [psql]
+> 4 - Para gerenciamento e criação do banco - [psql]
 
-5 - Para criar o banco da aplicação - [create database kanjam with owner kanjam;]
+> 5 - Para criar o banco da aplicação - [create database kanjam with owner kanjam;]
 
-**Instalação dos demais módulos**
+### Instalação dos demais módulos
 
-1 - Instalação do psycoepg2 - [sudo apt-get install python-psycopg2]
+> 1 - Instalação do psycoepg2 - [sudo apt-get install python-psycopg2]
 
-2 - Instalação do bootstrap3 - [sudo pip install django-bootstrap3]
+> 2 - Instalação do bootstrap3 - [sudo pip install django-bootstrap3]
