@@ -89,13 +89,13 @@ class Entry(models.Model):
 
     entryType = models.CharField(_('Entry Type'), choices=OPTIONS, max_length=20)
 
-    periodicity = models.ForeignKey(Periodicity)
+    periodicity = models.ForeignKey(Periodicity, verbose_name=_('Periodicity'))
         #Relacionamento de 1 pra n com Periodicidade
 
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, verbose_name=_('User'))
         #Relacionamento de 1 pra n com Usuario
 
-    category = models.ForeignKey(CategoryRecord)
+    category = models.ForeignKey(CategoryRecord, verbose_name=_('Category'))
         #Relacionamento de 1 pra n com Categoria de lancamento
 
     def __str__(self):

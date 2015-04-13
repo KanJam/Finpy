@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-30 01:04-0300\n"
+"POT-Creation-Date: 2015-04-13 08:42-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: forms.py:12
 msgid "The two password fields didn't match."
-msgstr ""
+msgstr "Os campos de senha não estão iguais."
 
 #: forms.py:14
 msgid "Password"
@@ -34,36 +34,132 @@ msgstr "Confirmação de senha"
 msgid "Enter the same password as above, for verification."
 msgstr "Digite a mesma senha como acima, para verificação."
 
-#: models.py:29
+#: models.py:14 models.py:20
+msgid "Undefined"
+msgstr "Indefinido"
+
+#: models.py:15 models.py:21
+msgid "Daily"
+msgstr "Diária"
+
+#: models.py:16 models.py:22
+msgid "Weekly"
+msgstr "Semanal"
+
+#: models.py:17 models.py:23
+msgid "Monthly"
+msgstr "Mensal"
+
+#: models.py:26
+msgid "Periodicity Identifier"
+msgstr "Identificador de Periodicidade"
+
+#: models.py:28
+msgid "Name"
+msgstr "Nome"
+
+#: models.py:30
+msgid "Days count"
+msgstr "Contagem de dias"
+
+#: models.py:45
+msgid "Name Category"
+msgstr "Nome da Categoria"
+
+#: models.py:49
+msgid "Description Category"
+msgstr "Descrição da Categoria"
+
+#: models.py:61 models.py:65
+#, fuzzy
+#| msgid "Welcome"
+msgid "Income"
+msgstr "Bem vindo"
+
+#: models.py:62 models.py:66
+msgid "Expense"
+msgstr "Despesa"
+
+#: models.py:69
+msgid "Entry Identifier"
+msgstr "Identificador de Lançamento"
+
+#: models.py:72
+msgid "Due Date"
+msgstr "Data de vencimento"
+
+#: models.py:75
+msgid "Registration Date"
+msgstr "Data de Lançamento"
+
+#: models.py:78
+msgid "Entry Description"
+msgstr "Descrição de Lançamento"
+
+#: models.py:81
+msgid "Entry Value"
+msgstr "Valor de Lançamento"
+
+#: models.py:84
+msgid "Entry Source"
+msgstr "Fonte de Lançamento"
+
+#: models.py:87
+msgid "Entry Quota Amount"
+msgstr "Quantidade de Parcelas"
+
+#: models.py:90
+msgid "Entry Type"
+msgstr "Tipo de Lançamento"
+
+#: models.py:92
+msgid "Periodicity"
+msgstr "Periodicidade"
+
+#: models.py:95
+msgid "User"
+msgstr ""
+
+#: models.py:98
+msgid "Category"
+msgstr "Categoria"
+
+#: models.py:122
 msgid "cpf"
 msgstr "CPF"
 
-#: models.py:30
+#: models.py:123
 msgid "Use format ???.???.???-??"
 msgstr "Use o formato ???.???.???-??"
 
-#: models.py:32 models.py:37
+#: models.py:125 models.py:130
 msgid "Wrong Format!"
 msgstr "Formato incorreto!"
 
-#: models.py:34
+#: models.py:127
 msgid "rg"
 msgstr "Registro Geral"
 
-#: models.py:35
+#: models.py:128
 msgid "Use format ?.???.???"
 msgstr "Use o formato ?.???.???"
 
-#: models.py:40
-msgid "expeditor"
+#: models.py:133
+#, fuzzy
+#| msgid "expeditor"
+msgid "Expeditor"
 msgstr "Orgão Expeditor"
 
-#: models.py:41
-msgid "job_title"
+#: models.py:134
+#, fuzzy
+#| msgid "job_title"
+msgid "Job Title"
 msgstr "Profissão"
 
-#: models.py:42
-msgid "organization"
+#: models.py:135
+#, fuzzy
+#| msgid "organization"
+msgid "Organization"
 msgstr "Organização"
 
 #: templates/Finpy/base.html:17
@@ -78,12 +174,20 @@ msgstr "Início"
 msgid "Personal Data"
 msgstr "Dados Pessoais"
 
-#: templates/Finpy/base.html:28 templates/accounts/login.html:13
+#: templates/Finpy/base.html:27 views.py:54
+msgid "Entry List"
+msgstr "Lista de Lançamentos"
+
+#: templates/Finpy/base.html:28
+msgid "New Entry"
+msgstr "Novo Lançamento"
+
+#: templates/Finpy/base.html:30 templates/accounts/login.html:13
 #: templates/accounts/password_reset_complete.html:9
 msgid "Log in"
 msgstr ""
 
-#: templates/Finpy/base.html:29 templates/accounts/signup.html:13
+#: templates/Finpy/base.html:31 templates/accounts/signup.html:13
 msgid "Signup"
 msgstr "Cadastrar"
 
@@ -132,7 +236,19 @@ msgid ""
 "you registered with, and check your spam folder."
 msgstr ""
 
-#: templates/profile/update.html:12
+#: templates/entry/create.html:13
+msgid "Create"
+msgstr "Criar"
+
+#: templates/entry/list.html:12
+msgid "Edit"
+msgstr "Editar"
+
+#: templates/entry/update.html:13
+msgid "Update"
+msgstr "Atualizar"
+
+#: templates/profile/update.html:13
 msgid "Save"
 msgstr "Salvar"
 
@@ -140,11 +256,15 @@ msgstr "Salvar"
 msgid "User Profile Update"
 msgstr "Atualizar Perfil de Usuário"
 
-#: views.py:46
+#: views.py:46 views.py:105
 msgid "This isn't your profile"
 msgstr "Este não é seu perfil"
 
-#: views.py:67
+#: views.py:75 views.py:98
+msgid "Entry Creation"
+msgstr "Criação de Lançamento"
+
+#: views.py:126
 msgid "User Registration"
 msgstr "Cadastro de Usuário"
 
