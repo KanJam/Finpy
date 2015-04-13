@@ -1,7 +1,7 @@
 from django import forms
 from django.utils.translation import ugettext, ugettext_lazy as _
 from django.contrib.auth.models import User
-from Finpy.models import UserProfile
+from Finpy.models import UserProfile, Entry
 
 class UserCreationForm(forms.ModelForm):
     """
@@ -42,5 +42,12 @@ class ProfileUpdateForm(forms.ModelForm):
 
     class Meta:
         model = UserProfile
+        fields = '__all__'
+        exclude = ['user',]
+
+class EntryForm(forms.ModelForm):
+
+    class Meta:
+        model = Entry
         fields = '__all__'
         exclude = ['user',]
