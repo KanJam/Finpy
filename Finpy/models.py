@@ -44,3 +44,16 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+class CategoryRecord(models.Model):
+
+    """Class responsible for registering the registry of revenues and expenses"""
+    """In Portuguese: Categoria de Lançamento"""
+    
+    nameCategory = models.CharField(_('nameCategory'), max_length=30, blank=False)
+        #Name of category recorded    
+        #Name of category never should be blank
+        
+    description = models.CharField(_('nameCategory'), max_length=150, blank=True)
+        #Detail of category recorded
+        #Is not required    
