@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext as _
@@ -6,8 +6,8 @@ from django.http import HttpResponseRedirect
 from django.template.response import TemplateResponse
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.models import User
-from Finpy.models import UserProfile
-from Finpy.forms import UserCreationForm, ProfileUpdateForm
+from Finpy.models import UserProfile, Entry
+from Finpy.forms import UserCreationForm, ProfileUpdateForm, EntryForm
 
 # Create your views here.
 
@@ -37,6 +37,65 @@ def update_profile(request, profile_id=None, template_name='profile/update.html'
             context = {
                 'form': form,
                 'title': _('User Profile Update'),
+            }
+            if extra_context is not None:
+                context.update(extra_context)
+            return TemplateResponse(request, template_name, context,
+                current_app=current_app)
+        else:
+            return HttpResponse(_("This isn't your profile"))
+
+@login_required
+def list_entry(request, template_name='entry/list.html',
+    current_app=None, extra_context=None):
+    entries = request.user.entry_set.all()
+    context = {
+        'entries': entries,
+        'title': _('Entry List')
+    }
+    if extra_context is not None:
+        context.update(extra_context)
+    return TemplateResponse(request, template_name, context,
+        current_app=current_app)
+
+@login_required
+def create_entry(request, template_name='entry/create.html',
+    entry_form=EntryForm, current_app=None, extra_context=None):
+    if request.method == "POST":
+        entry = Entry()
+        entry.user = request.user
+        form = entry_form(data=request.POST, instance=entry)
+        if form.is_valid():
+            form.save()
+    else:
+        form = entry_form()
+
+    context = {
+        'form': form,
+        'title': _('Entry Creation')
+    }
+    if extra_context is not None:
+        context.update(extra_context)
+    return TemplateResponse(request, template_name, context,
+        current_app=current_app)
+
+@login_required
+def update_entry(request, entry_id=None, template_name='entry/update.html',
+    success_view=list_entry, entry_form=EntryForm, current_app=None, extra_context=None):
+    if entry_id is not None:
+        entry = Entry.objects.get(pk=int(entry_id))
+        if entry.user == request.user:
+            if request.method == "POST":
+                form = entry_form(data=request.POST, instance=entry)
+                if form.is_valid():
+                    form.save()
+                    return redirect(success_view)
+            else:
+                form = entry_form(instance=entry)
+
+            context = {
+                'form': form,
+                'title': _('Entry Creation')
             }
             if extra_context is not None:
                 context.update(extra_context)
