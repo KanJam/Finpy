@@ -1,46 +1,173 @@
-<!DOCTYPE html>
+{% load staticfiles %}
 {% load bootstrap3 %}
 {% load i18n %}
+<!doctype html>
+<html class="no-js" lang="en">
+	<head>
+	    <meta charset="utf-8" />
+		    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+			    {% block meta %}{% endblock meta %}
+				    {% block base_title %}
+					    <title>{% block title %}EqLibra{% endblock title %}</title>
+					    {% endblock base_title %}
 
-<html lang="en">
-<head>
-    <link rel="stylesheet" type="text/css" media="all" href="/static/css/style.css">
-    {%bootstrap_css%}
-    {%bootstrap_javascript jquery=1%}
-    <title>{% block title %}EqLibra - Gerenciamento Financeiro{% endblock %}</title>
-</head>
+              {% bootstrap_css %}
+					    {# Base Foundation CSS #}
+					    {% block foundation_css %}
+					    <link href="{% static "foundation/css/normalize.css" %}" rel="stylesheet"/>
+					    <link href="{% static "foundation/css/foundation.min.css" %}" rel="stylesheet"/>
+					    {% endblock foundation_css %}
 
-<body>
-  <div id="topbar">
-    <p class="left logo">Eq<font color="#FFE46F">Libra</font></p>
-    {% if user.is_authenticated %}
-    <p class="right">{% trans 'Logged in as: '%}{{user}}! <a class="whitelink" href="{% url 'logout' %}">Logout</a></p>
-    {% endif %}
-  </div>
-  <section id="body">
-    <div id="sidebar">
-        {% block sidebar %}
+					    {# Custom CSS #}
+					    {% block css %}
+              {% endblock css %}
 
-          {% if user.is_authenticated %}
-            <a class="mainlink" href="{% url 'index' %}">{% trans 'Home' %}</a><br>
-            <a class="mainlink" href="{% url 'update_profile' user.userprofile.id %}">{% trans 'Personal Data' %}</a><br>
-            <a class="mainlink" href="{% url 'list_entry'%}">{% trans 'Entry List' %}</a><br>
-            <a class="mainlink" href="{% url 'create_entry'%}">{% trans 'New Entry' %}</a><br>
-          {% else %}
-            <a class="mainlink" href="{% url 'login' %}">{% trans 'Log in' %}</a><br>
-            <a class="mainlink" href="{% url 'signup' %}">{% trans 'Signup' %}</a><br>
-          {% endif %}
+					    {# Override if you need another version of modernizr #}
+					    {% block foundation_modernizer %}
+					    <script src="{% static "foundation/js/vendor/modernizr.js" %}"></script>
+					    {% endblock foundation_modernizer %}
 
-        {% endblock %}
-    </div>
+					    {# Custom head JS #}
+					    {% block head_js %}
+                {%bootstrap_javascript jquery=1%}
+              {% endblock head_js %}
+				</head>
+				<body {% block body_attr %}{% endblock body_attr %}>
+				    {# Main content goes here #}
+                    {% block topbar %}
+                      <nav class="top-bar" data-topbar>
+                        <ul class="title-area">
+                           
+                          <li class="name">
+                            <h1>
+                              <a href="#">
+                                EqLibra
+                              </a>
+                            </h1>
+                          </li>
+                          <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+                        </ul>
+                     
+                        <section class="top-bar-section">
+                          {% if user.is_authenticated %} 
+                              <ul class="right">
+                                <li class="divider"></li>
+                                <li class="has-dropdown">
+                                  <a href="#">{% trans 'Entries' %}</a>
+                                  <ul class="dropdown">
+                                    <li><a href="{% url 'list_entry'%}">{% trans 'List'%}</a></li>
+                                    <li><a href="{% url 'create_entry'%}">{% trans 'New' %}</a></li>
+                                  </ul>
+                                </li>
+                                <li class="divider"></li>
+                                <li><a href="#">Main Item 2</a></li>
+                                <li class="divider"></li>
+                                <li class="has-dropdown">
+                                  <a href="#">{{user}}</a>
+                                  <ul class="dropdown">
+                                    <li><a href="{% url 'update_profile' user.userprofile.id %}">{% trans 'Personal Data' %}</a></li>
+                                    <li><a href="{% url 'logout' %}">{% trans 'Logout' %}</a></li>
+                                  </ul>
+                                </li>
+                              </ul>
+                          {% else %}
+                            <ul class="right">
+                              <li class="divider"></li>
+                              <li><a href="{% url 'signup' %}">{% trans 'Signup' %}</a></li>
+                              <li class="divider"></li>
+                              <li><a href="{% url 'login' %}">{% trans 'Login' %}</a></li>
+                            </ul>
+                          {% endif %}
+                        </section>
+                      </nav>
+                    {% endblock %}
 
-    <div id="content" class="content">
-        {% block content %}{% endblock %}
-    </div>
+				    {% block base_body %}
+				      <div class="row">
+				     	<br>
+				        <div class="large-3 panel columns">
+				          <img src="http://placehold.it/500x500&text=Image">
+				            {% block tip %}
+				              <h4>Dica</h4>
+				     
+				              <p>Dica Financeira.</p><hr>
+				            {% endblock %}
+				          <div class="row">
+				            <div class="large-4 columns">
+				            <a href="#" class="small button">Link</a>
+				            </div>
+				          </div>
+				        </div>
+				     
+				        <div class="large-9 columns">
+				          <div class="panel">
+				            <div class="row">
+				              <div class="large-12 columns">
+                      {% block content %}
+                      {% endblock %}
+                      </div>
+				            </div>
+				          </div>
+				     
+				          <div class="row">
+				            <div class="large-6 columns">
+				              <div class="panel">
+				                <h5>Subheader</h5>
+				                <p>Sed sit amet posuere erat. Quisque in ipsum non augue euismod dapibus non et eros.</p>
+				                <a href="#" class="small button">Link</a>
+				              </div>
+				            </div>
+				     
+				            <div class="large-6 columns">
+				              <div class="panel">
+				                <h5>Subheader</h5>
+				                <p>Sed sit amet posuere erat. Quisque in ipsum non augue euismod dapibus non et eros.</p>
+				                <a href="#" class="small button">Link</a>
+				              </div>
+				            </div>
+				          </div>
+				        </div>
+				      </div>
+				      <footer class="row">
+				      <div class="large-12 columns"><hr/>
+				          <div class="row">
+				     
+				            <div class="large-6 columns">
+				                <p>© Copyright no one at all. Go to town.</p>
+				            </div>
+				     
+				            <div class="large-6 columns">
+				                <ul class="inline-list right">
+				                  <li><a href="#">Link 1</a></li>
+				                  <li><a href="#">Link 2</a></li>
+				                  <li><a href="#">Link 3</a></li>
+				                  <li><a href="#">Link 4</a></li>
+				                </ul>
+				            </div>
+				     
+				          </div>
+				      </div>
+				      </footer>
+				    {% endblock base_body %}
 
-  </section>
-  <div id="bottombar">
-    Time de Desenvolvimento @KanJam / Projeto @Finpy - 2015/1
-  </div>
-</body>
+				    {# Override if you need another version of jQuery #}
+				    {% block foundation_jquery %}
+				    <script src="{% static "foundation/js/vendor/jquery.js" %}"></script>
+				    {% endblock foundation_jquery %}
+
+				    {# Foundation JS #}
+				    {% block foundation_js %}
+				    <script src="{% static "foundation/js/foundation.min.js" %}"></script>
+				    {% endblock foundation_js %}
+
+				    {# Custom JS #}
+				    {% block body_js %}{% endblock body_js %}
+
+				    {# Init Foundation #}
+				    {% block foundation_js_init %}
+				    <script>
+				        $(document).foundation();
+				    </script>
+				    {% endblock foundation_js_init %}
+	</body>
 </html>

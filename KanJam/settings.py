@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'Finpy',
     'bootstrap3',
+    'foundation',
 )
 
 MIDDLEWARE_CLASSES = (
