@@ -6,13 +6,27 @@
 {% block content %}
 <div id="container">
 {% for entry in entries %}
-  {% bootstrap_label entry.entrySource %} ---- {{entry.entryValue}}
-  ---- {{entry.entryType}}
-  <a href="{% url 'update_entry' entry.entryID %}" class="btn btn-primary">
-    {% bootstrap_icon "pencil" %} {% trans 'Edit' %}
-  </a>
+  
+  <div class="large-12 columns">
+  <div class="row">
+    <div class="large-12 panel columns">
+    <div class="large-6 columns">
+    <h3>{{ entry.entrySource }}</h3>Tipo: {{entry.entryType}}<p class ="right">Valor: {{entry.entryValue}}</p>
+    </div>
+    <div class="large-6 columns" style="text-align: center;">
+      <a href="{% url 'update_entry' entry.entryID %}" class="btn btn-primary">
+        {% bootstrap_icon "pencil" %} {% trans 'Edit' %}
+      </a>
+      <a href="#" class="btn btn-primary">
+        {% bootstrap_icon "erase" %} {% trans 'Delete' %}
+      </a>
+    </div>
+  </div>
+  </div>
+</div>
   <br>
 {% endfor %}
 
 </div>
+
 {% endblock %}
