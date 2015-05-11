@@ -11,13 +11,13 @@
   <div class="row">
     <div class="large-12 panel columns">
     <div class="large-6 columns">
-    <h3>{{ entry.entrySource }}</h3>Tipo: {{entry.entryType}}<p class ="right">Valor: {{entry.entryValue}}</p>
+    <h3>{{ entry.entry_source }}</h3>{% trans 'Type'%}: {{entry.entry_type}}<p class ="right">{% trans 'Value'%}: {{entry.entry_value}}</p>
     </div>
     <div class="large-6 columns" style="text-align: center;">
-      <a href="{% url 'update_entry' entry.entryID %}" class="btn btn-primary">
+      <a href="{% url 'update_entry' entry.id %}" class="btn btn-primary">
         {% bootstrap_icon "pencil" %} {% trans 'Edit' %}
       </a>
-      <a href="#" class="btn btn-primary">
+      <a href="{% url 'delete_entry' entry.id %}" class="btn btn-primary" data-confirm>
         {% bootstrap_icon "erase" %} {% trans 'Delete' %}
       </a>
     </div>

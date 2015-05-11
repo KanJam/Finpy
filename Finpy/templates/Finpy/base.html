@@ -29,8 +29,8 @@
 
 					    {# Custom head JS #}
 					    {% block head_js %}
-                {%bootstrap_javascript jquery=1%}
-              {% endblock head_js %}
+                			{%bootstrap_javascript jquery=1%}
+              			{% endblock head_js %}
 				</head>
 				<body {% block body_attr %}{% endblock body_attr %}>
 				    {# Main content goes here #}
@@ -53,10 +53,10 @@
                               <ul class="right">
                                 <li class="divider"></li>
                                 <li class="has-dropdown">
-                                  <a href="#">{% trans 'Entries' %}</a>
+                                  <a href="#">{% trans 'Entries'%}</a>
                                   <ul class="dropdown">
                                     <li><a href="{% url 'list_entry'%}">{% trans 'List'%}</a></li>
-                                    <li><a href="{% url 'create_entry'%}">{% trans 'New' %}</a></li>
+                                    <li><a href="{% url 'create_entry'%}">{% trans 'New'%}</a></li>
                                   </ul>
                                 </li>
                                 <li class="divider"></li>
@@ -84,7 +84,7 @@
 				      <div class="row">
 				     	<br>
 				        <div class="large-3 panel columns">
-				          <img src="http://placehold.it/500x500&text=Image">
+				          <img src="/static/images/logo.png">
 				            {% block tip %}
 				              <h4>Importância do controle de finanças</h4>
 				     
@@ -140,12 +140,20 @@
 				    {% endblock foundation_js %}
 
 				    {# Custom JS #}
-				    {% block body_js %}{% endblock body_js %}
+				    {% block body_js %}
+              <script src="{% static "js/confirm_with_reveal.js" %}"></script>
+            {% endblock body_js %}
 
 				    {# Init Foundation #}
 				    {% block foundation_js_init %}
 				    <script>
 				        $(document).foundation();
+                $(document).confirmWithReveal({
+                	title: "{% trans 'Are you sure?' %}",
+                	body: "{% trans 'This action cannot be undone.' %}",
+                	ok: "{% trans 'Confirm'%}",
+  					cancel: "{% trans 'Cancel' %}"
+				});
 				    </script>
 				    {% endblock foundation_js_init %}
 	</body>

@@ -50,4 +50,7 @@ class EntryForm(forms.ModelForm):
     class Meta:
         model = Entry
         fields = '__all__'
-        exclude = ['user',]
+        exclude = ['entry_user']
+
+    def delete(self, instance=None):
+        return instance.delete()

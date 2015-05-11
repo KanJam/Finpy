@@ -63,7 +63,7 @@ def create_entry(request, template_name='entry/create.html',
     entry_form=EntryForm, current_app=None, extra_context=None):
     if request.method == "POST":
         entry = Entry()
-        entry.user = request.user
+        entry.entry_user = request.user
         form = entry_form(data=request.POST, instance=entry)
         if form.is_valid():
             form.save()
@@ -84,7 +84,7 @@ def update_entry(request, entry_id=None, template_name='entry/update.html',
     success_view=list_entry, entry_form=EntryForm, current_app=None, extra_context=None):
     if entry_id is not None:
         entry = Entry.objects.get(pk=int(entry_id))
-        if entry.user == request.user:
+        if entry.entry_user == request.user:
             if request.method == "POST":
                 form = entry_form(data=request.POST, instance=entry)
                 if form.is_valid():
@@ -101,6 +101,19 @@ def update_entry(request, entry_id=None, template_name='entry/update.html',
                 context.update(extra_context)
             return TemplateResponse(request, template_name, context,
                 current_app=current_app)
+        else:
+            return HttpResponse(_("This isn't your profile"))
+
+@login_required
+def delete_entry(request, entry_id=None, template_name='entry/delete.html',
+    success_view=list_entry, entry_form=EntryForm, current_app=None, extra_context=None):
+    if entry_id is not None:
+        entry = Entry.objects.get(pk=int(entry_id))
+        if entry.entry_user == request.user:
+            form = entry_form(data=request.POST, instance=entry)
+            form.delete(entry)
+            return redirect(success_view)
+
         else:
             return HttpResponse(_("This isn't your profile"))
 

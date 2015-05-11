@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-11 06:20-0300\n"
+"POT-Creation-Date: 2015-05-11 06:03-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,91 +16,78 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: Finpy/forms.py:12
 msgid "The two password fields didn't match."
-msgstr "Os campos de senha não estão iguais."
+msgstr ""
 
 #: Finpy/forms.py:14
 msgid "Password"
-msgstr "Senha"
+msgstr ""
 
 #: Finpy/forms.py:16
 msgid "Password confirmation"
-msgstr "Confirmação de senha"
+msgstr ""
 
 #: Finpy/forms.py:18
 msgid "Enter the same password as above, for verification."
-msgstr "Digite a mesma senha como acima, para verificação."
+msgstr ""
 
 #: Finpy/models.py:75
 msgid "cpf"
-msgstr "CPF"
+msgstr ""
 
 #: Finpy/models.py:76
 msgid "Use format ???.???.???-??"
-msgstr "Use o formato ???.???.???-??"
+msgstr ""
 
 #: Finpy/models.py:78 Finpy/models.py:94
 msgid "Wrong Format!"
-msgstr "Formato incorreto!"
+msgstr ""
 
 #: Finpy/models.py:82
-msgid "job_title"
-msgstr "Profissão"
-
 msgid "Job Title"
-msgstr "Profissão"
+msgstr ""
 
 #: Finpy/models.py:85
-msgid "organization"
-msgstr "Organização"
-
 msgid "Organization"
-msgstr "Organização"
+msgstr ""
 
 #: Finpy/models.py:88
-msgid "expeditor"
-msgstr "Orgão Expeditor"
-
 msgid "Expeditor"
-msgstr "Orgão Expeditor"
-
+msgstr ""
 
 #: Finpy/models.py:91
 msgid "rg"
-msgstr "Registro Geral"
+msgstr ""
 
 #: Finpy/models.py:92
 msgid "Use format ?.???.???"
-msgstr "Use o formato ?.???.???"
+msgstr ""
 
 #: Finpy/models.py:110
-#, fuzzy
-#| msgid "Entry Value"
 msgid "Total Entry Value"
-msgstr "Valor de Lançamento"
+msgstr ""
 
+#: Finpy/models.py:112
 msgid "Current Entry Value"
-msgstr "Valor de Lançamento Atual"
-
+msgstr ""
 
 #: Finpy/models.py:115 Finpy/models.py:122
 msgid "Undefined"
-msgstr "Indefinido"
+msgstr ""
 
 #: Finpy/models.py:116 Finpy/models.py:123
 msgid "Daily"
-msgstr "Diária"
+msgstr ""
 
 #: Finpy/models.py:117 Finpy/models.py:124
 msgid "Weekly"
-msgstr "Semanal"
+msgstr ""
 
 #: Finpy/models.py:118 Finpy/models.py:125
 msgid "Monthly"
-msgstr "Mensal"
+msgstr ""
 
 #: Finpy/models.py:137
 msgid "InvestimentSimulation's Finance"
@@ -108,171 +95,171 @@ msgstr ""
 
 #: Finpy/models.py:140
 msgid "Amount Invested"
-msgstr "Montante Investido"
+msgstr ""
 
 #: Finpy/models.py:143
 msgid "Taxes"
-msgstr "Taxas"
+msgstr ""
 
 #: Finpy/models.py:146
 msgid "Quota"
-msgstr "Parcela"
+msgstr ""
 
-
+#: Finpy/models.py:149
 msgid "Taxes Periodicity Type"
-msgstr "Periodicidade de Taxas"
+msgstr ""
 
-
+#: Finpy/models.py:152
 msgid "Quota Periodicity Type"
-msgstr "Periodicidade das Parcelas"
-
+msgstr ""
 
 #: Finpy/models.py:166
 msgid "Name Category"
-msgstr "Nome da Categoria"
+msgstr ""
 
 #: Finpy/models.py:170
 msgid "Description Category"
-msgstr "Descrição da Categoria"
+msgstr ""
+
+#: Finpy/models.py:173 Finpy/models.py:178
+msgid "Income"
+msgstr ""
 
 #: Finpy/models.py:174 Finpy/models.py:179
 msgid "Expense"
-msgstr "Despesa"
+msgstr ""
 
 #: Finpy/models.py:191
 msgid "Entry Source"
-msgstr "Fonte de Lançamento"
+msgstr ""
 
+#: Finpy/models.py:194
+msgid "Entry Value"
+msgstr ""
 
 #: Finpy/models.py:197
 msgid "Due Date"
-msgstr "Data de vencimento"
+msgstr ""
 
 #: Finpy/models.py:200
 msgid "Registration Date"
-msgstr "Data de Lançamento"
+msgstr ""
 
 #: Finpy/models.py:203
 msgid "Entry Description"
-msgstr "Descrição de Lançamento"
+msgstr ""
 
 #: Finpy/models.py:206
 msgid "Entry Quota Amount"
-msgstr "Quantidade de Parcelas"
+msgstr ""
 
 #: Finpy/models.py:209
-msgid "Periodicity"
-msgstr "Periodicidade"
-
 msgid "Entry Periodicity Type"
-msgstr "Periodicidade de Lançamento"
+msgstr ""
 
 #: Finpy/models.py:212
 msgid "Entry Type"
-msgstr "Tipo de Lançamento"
+msgstr ""
 
 #: Finpy/models.py:215
-msgid "Category"
-msgstr "Categoria"
-
 msgid "Entry Category"
-msgstr "Categoria de Lançamento"
+msgstr ""
 
 #: Finpy/models.py:218
 msgid "User"
-msgstr "Usuário"
+msgstr ""
 
 #: Finpy/models.py:221 Finpy/models.py:227 Finpy/models.py:234
 msgid "Overdue"
-msgstr "Vencido"
+msgstr ""
 
 #: Finpy/models.py:222 Finpy/models.py:228 Finpy/models.py:235
 msgid "No Overdue Yet"
-msgstr "Não vencido ainda"
+msgstr ""
 
-
+#: Finpy/models.py:223 Finpy/models.py:229
 msgid "All Entry"
-msgstr "Todos Lançamentos"
+msgstr ""
 
-
+#: Finpy/templates/Finpy/base.html:56
 msgid "Entries"
-msgstr "Lançamentos"
+msgstr ""
 
 #: Finpy/templates/Finpy/base.html:58
 msgid "List"
-msgstr "Lista"
+msgstr ""
 
 #: Finpy/templates/Finpy/base.html:59
 msgid "New"
-msgstr "Novo"
+msgstr ""
 
 #: Finpy/templates/Finpy/base.html:66 Finpy/templates/Finpy/old_base.html:26
 msgid "Personal Data"
-msgstr "Dados Pessoais"
+msgstr ""
 
 #: Finpy/templates/Finpy/base.html:67
 msgid "Logout"
-msgstr "Sair"
+msgstr ""
 
 #: Finpy/templates/Finpy/base.html:74 Finpy/templates/Finpy/old_base.html:31
 #: Finpy/templates/accounts/signup.html:13
 msgid "Signup"
-msgstr "Cadastrar"
+msgstr ""
 
 #: Finpy/templates/Finpy/base.html:76
 msgid "Login"
-msgstr "Login"
+msgstr ""
 
 #: Finpy/templates/Finpy/base.html:152
 msgid "Are you sure?"
-msgstr "Você tem certeza?"
+msgstr ""
 
 #: Finpy/templates/Finpy/base.html:153
 msgid "This action cannot be undone."
-msgstr "Esta ação não pode ser desfeita."
+msgstr ""
 
 #: Finpy/templates/Finpy/base.html:154
 msgid "Confirm"
-msgstr "Confirmar"
+msgstr ""
 
 #: Finpy/templates/Finpy/base.html:155
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr ""
 
 #: Finpy/templates/Finpy/index.html:7
 msgid "Welcome"
-msgstr "Bem vindo"
+msgstr ""
 
 #: Finpy/templates/Finpy/old_base.html:17
 msgid "Logged in as: "
-msgstr "Logado como: "
+msgstr ""
 
 #: Finpy/templates/Finpy/old_base.html:25 Finpy/views.py:18
 msgid "Home"
-msgstr "Início"
+msgstr ""
 
 #: Finpy/templates/Finpy/old_base.html:27 Finpy/views.py:54
 msgid "Entry List"
-msgstr "Lista de Lançamentos"
+msgstr ""
 
 #: Finpy/templates/Finpy/old_base.html:28
 msgid "New Entry"
-msgstr "Novo Lançamento"
+msgstr ""
 
 #: Finpy/templates/Finpy/old_base.html:30
 #: Finpy/templates/accounts/login.html:13
 #: Finpy/templates/accounts/password_reset_complete.html:9
 msgid "Log in"
-msgstr "Login"
+msgstr ""
 
 #: Finpy/templates/accounts/password_change_done.html:7
 msgid "Your password was changed."
-msgstr "Seu password foi alterado."
+msgstr ""
 
 #: Finpy/templates/accounts/password_change_form.html:11
 #: Finpy/templates/accounts/password_reset_form.html:11
 msgid "Submit"
-msgstr "Enviar"
+msgstr ""
 
 #: Finpy/templates/accounts/password_reset_complete.html:7
 msgid "Your password has been set.  You may go ahead and log in now."
@@ -308,59 +295,36 @@ msgstr ""
 
 #: Finpy/templates/entry/create.html:13
 msgid "Create"
-msgstr "Criar"
-
-#: Finpy/templates/entry/list.html:14
-msgid "Type"
-msgstr "Tipo"
-
-#: Finpy/templates/entry/list.html:14
-msgid "Entry Value"
-msgstr "Valor de Lançamento"
-
-msgid "Value"
-msgstr "Valor"
+msgstr ""
 
 #: Finpy/templates/entry/list.html:18
 msgid "Edit"
-msgstr "Editar"
+msgstr ""
 
 #: Finpy/templates/entry/list.html:21
 msgid "Delete"
-msgstr "Apagar"
+msgstr ""
 
 #: Finpy/templates/entry/update.html:13
 msgid "Update"
-msgstr "Atualizar"
+msgstr ""
 
 #: Finpy/templates/profile/update.html:13
 msgid "Save"
-msgstr "Salvar"
+msgstr ""
 
 #: Finpy/views.py:39
 msgid "User Profile Update"
-msgstr "Atualizar Perfil de Usuário"
+msgstr ""
 
 #: Finpy/views.py:46 Finpy/views.py:105 Finpy/views.py:118
 msgid "This isn't your profile"
-msgstr "Este não é seu perfil"
+msgstr ""
 
 #: Finpy/views.py:75 Finpy/views.py:98
 msgid "Entry Creation"
-msgstr "Criação de Lançamento"
+msgstr ""
 
 #: Finpy/views.py:139
 msgid "User Registration"
-msgstr "Cadastro de Usuário"
-
-#~ msgid "Periodicity Identifier"
-#~ msgstr "Identificador de Periodicidade"
-
-#~ msgid "Name"
-#~ msgstr "Nome"
-
-#~ msgid "Days count"
-#~ msgstr "Contagem de dias"
-
-#~ msgid "Entry Identifier"
-#~ msgstr "Identificador de Lançamento"
+msgstr ""

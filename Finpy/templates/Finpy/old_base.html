@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load bootstrap3 %}
+{% load i18n %}
+
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" media="all" href="/static/css/style.css">
+    {%bootstrap_css%}
+    {%bootstrap_javascript jquery=1%}
+    <title>{% block title %}EqLibra - Gerenciamento Financeiro{% endblock %}</title>
+</head>
+
+<body>
+  <div id="topbar">
+    <p class="left logo">Eq<font color="#FFE46F">Libra</font></p>
+    {% if user.is_authenticated %}
+    <p class="right">{% trans 'Logged in as: '%}{{user}}! <a class="whitelink" href="{% url 'logout' %}">Logout</a></p>
+    {% endif %}
+  </div>
+  <section id="body">
+    <div id="sidebar">
+        {% block sidebar %}
+
+          {% if user.is_authenticated %}
+            <a class="mainlink" href="{% url 'index' %}">{% trans 'Home' %}</a><br>
+            <a class="mainlink" href="{% url 'update_profile' user.userprofile.id %}">{% trans 'Personal Data' %}</a><br>
+            <a class="mainlink" href="{% url 'list_entry'%}">{% trans 'Entry List' %}</a><br>
+            <a class="mainlink" href="{% url 'create_entry'%}">{% trans 'New Entry' %}</a><br>
+          {% else %}
+            <a class="mainlink" href="{% url 'login' %}">{% trans 'Log in' %}</a><br>
+            <a class="mainlink" href="{% url 'signup' %}">{% trans 'Signup' %}</a><br>
+          {% endif %}
+
+        {% endblock %}
+    </div>
+
+    <div id="content" class="content">
+        {% block content %}{% endblock %}
+    </div>
+
+  </section>
+  <div id="bottombar">
+    Time de Desenvolvimento @KanJam / Projeto @Finpy - 2015/1
+  </div>
+</body>
+</html>
