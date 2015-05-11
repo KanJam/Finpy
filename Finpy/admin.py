@@ -1,8 +1,9 @@
 from django.contrib import admin
-from Finpy.models import Entry, UserProfile, Periodicity, CategoryRecord
+from Finpy.models import Category, Entry, UserProfile, Finance, InvestimentSimulation
 
+admin.site.register(Category)
 admin.site.register(Entry)
-admin.site.register(Periodicity)
-admin.site.register(CategoryRecord)
 admin.site.register(UserProfile)
+admin.site.register(Finance)
+admin.site.register(InvestimentSimulation)
 # Register your models here.

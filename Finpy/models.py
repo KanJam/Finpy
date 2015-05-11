@@ -3,19 +3,121 @@ from django.utils.translation import ugettext, ugettext_lazy as _
 from django.core import validators
 from django.contrib.auth.models import User
 
-# Create your models here.
+class UserProfile(models.Model):
 
+    """Classe que representa o perfil de um usuario"""
+    """In Portuguese: Perfil de Usuario"""
 
-class Periodicity(models.Model):
+    # Usuario Associado
+    user = models.OneToOneField(User)
 
-    """Classe responsavel por representar a periodicidade de uma receita/despesa"""
-    """In Portuguese: Periodicidade"""
+    # Valores possiveis para Estado
+    AC = 'AC'
+    AL = 'AL'
+    AP = 'AP'
+    AM = 'AM'
+    BA = 'BA'
+    CE = 'CE'
+    DF = 'DF'
+    ES = 'ES'
+    GO = 'GO'
+    MA = 'MA'
+    MT = 'MT'
+    MS = 'MS'
+    MG = 'MG'
+    PA = 'PA'
+    PB = 'PB'
+    PR = 'PR'
+    PE = 'PE'
+    PI = 'PI'
+    RJ = 'RJ'
+    RN = 'RN'
+    RS = 'RS'
+    RO = 'RO'
+    RR = 'RR'
+    SC = 'SC'
+    SP = 'SP'
+    SE = 'SE'
+    TO = 'TO'
 
+    # Enum de Estados
+    STATES = (
+    (AC, 'AC'),
+    (AL, 'AL'),
+    (AP, 'AP'),
+    (AM, 'AM'),
+    (BA, 'BA'),
+    (CE, 'CE'),
+    (DF, 'DF'),
+    (ES, 'ES'),
+    (GO, 'GO'),
+    (MA, 'MA'),
+    (MT, 'MT'),
+    (MS, 'MS'),
+    (MG, 'MG'),
+    (PA, 'PA'),
+    (PB, 'PB'),
+    (PR, 'PR'),
+    (PE, 'PE'),
+    (PI, 'PI'),
+    (RJ, 'RJ'),
+    (RN, 'RN'),
+    (RS, 'RS'),
+    (RO, 'RO'),
+    (RR, 'RR'),
+    (SC, 'SC'),
+    (SP, 'SP'),
+    (SE, 'SE'),
+    (TO, 'TO')
+    )
+    
+    # CPF
+    cpf = models.CharField(_('cpf'),max_length=14,
+        help_text=_('Use format ???.???.???-??'),
+        validators=[
+            validators.RegexValidator(r'^[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}$',_('Wrong Format!'), 'invalid'),
+        ], blank=True)
+    
+    # Profissao
+    job_title = models.CharField(_('Job Title'), max_length=150, blank=True)
+    
+    # Organizacao onde Trabalha
+    organization = models.CharField(_('Organization'), max_length=150, blank=True)
+    
+    # Estado do Orgao Expedidor do RG
+    expeditor_uf = models.CharField(_('Expeditor'),max_length=2, choices=STATES, default=DF, blank=True)
+    
+    # RG
+    rg = models.CharField(_('rg'),max_length=9,
+        help_text=_('Use format ?.???.???'),
+        validators=[
+                validators.RegexValidator(r'^[0-9]{1}\.?[0-9]{3}\.?[0-9]{3}$',_('Wrong Format!'), 'invalid'),
+        ], blank=True)
+
+    
+    def __str__(self):
+        return self.user.username
+
+class Finance(models.Model):
+
+    """Classe responsavel por armazenar lancamentos e simulacoes de investimento"""
+    """In Portugues: Financa"""
+
+    # Usuario Associado
+    finance_user = models.OneToOneField(User)
+
+    # Valor Total de Lancamentos
+    total_entry_value = models.DecimalField(_('Total Entry Value'), decimal_places=2, max_digits=12)
+    # Caixa Atual
+    current_value = models.DecimalField(_('Current Entry Value'), decimal_places=2, max_digits=12)
+
+    # Valores Possiveis de Periodicidade
     UNDEFINED = _('Undefined')
-    DAILY = _('Daily') #Diario
-    WEEKLY = _('Weekly') #Semanal
-    MONTHLY = _('Monthly') #Mensal
+    DAILY = _('Daily') # Diario
+    WEEKLY = _('Weekly') # Semanal
+    MONTHLY = _('Monthly') # Mensal
 
+    # Enum de Periodicidade
     PERIODICITY = (
     (UNDEFINED, _('Undefined')),
     (DAILY, _('Daily')),
@@ -23,116 +125,115 @@ class Periodicity(models.Model):
     (MONTHLY, _('Monthly')),
     )
 
-    periodicityID = models.AutoField(_('Periodicity Identifier'), primary_key=True)
+    def __str__(self):
+        return self.currentValue
 
-    name = models.CharField(_('Name'), choices=PERIODICITY, max_length=20)
+class InvestimentSimulation(models.Model):
 
-    daysCount = models.IntegerField(_('Days count'), default = 30)
+    """Classe responsavel por manter simulacoes de investimento"""
+    """In Portuguese: SimulacaoInvestimento"""
+
+    # Catalogo Financeiro Associado
+    finance = models.ForeignKey(Finance, verbose_name=_('InvestimentSimulation\'s Finance'))
+
+    # Valor Investido
+    amount_invested = models.DecimalField(_('Amount Invested'), decimal_places=2, max_digits=12)
+    
+    # Juros
+    taxes = models.DecimalField(_('Taxes'), decimal_places=2, max_digits=5)
+    
+    # Quantidade de Parcelas
+    quota = models.PositiveIntegerField(_('Quota'), default=1)
+    
+    # Tipo da Periodicidade dos Juros
+    periodicity_taxes = models.CharField(_('Taxes Periodicity Type'), choices=Finance.PERIODICITY, default=Finance.MONTHLY, max_length=20)
+    
+    # Tipo da Periodicidade das Parcelas
+    quota_taxes = models.CharField(_('Quota Periodicity Type'), choices=Finance.PERIODICITY, default=Finance.MONTHLY, max_length=20)
 
     def __str__(self):
-        return self.name
+        return self.amount_invested
 
 
-class CategoryRecord(models.Model):
+class Category(models.Model):
 
     """Classe responsavel por registrar uma categoria de receita e despesa"""
     """Class responsible for registering the registry of revenues and expenses"""
-    """In Portuguese: Categoria de Lancamento"""
+    """In Portuguese: Categoria"""
 
-    categoryID = models.AutoField(primary_key=True);
-        #Primary Key of class. Automatically Generated
+    # Name of category recorded
+    # Name of category never should be blank
+    category_name = models.CharField(_('Name Category'), max_length=30, blank=False)
 
-    nameCategory = models.CharField(_('Name Category'), max_length=30, blank=False)
-        #Name of category recorded
-        #Name of category never should be blank
+    # Detail of category recorded
+    # Is not required
+    category_description = models.TextField(_('Description Category'), max_length=150, blank=True)
 
-    descriptionCategory = models.TextField(_('Description Category'), max_length=150, blank=True)
-        #Detail of category recorded
-        #Is not required
-
-    def __str__(self):
-        return self.nameCategory
-
-class Entry(models.Model):
-
-    """Classe responsavel por manter os dados em comuns de receitas e despesas"""
-    """In Portuguese: Contabil"""
-
+    # Tipos de Lancamento
     INCOME = _('Income')
     EXPENSE = _('Expense')
 
-    OPTIONS = (
+    # Enum de Lancamentos
+    ENTRY_TYPE = (
     (INCOME, _('Income')),
     (EXPENSE, _('Expense')),
     )
 
-    entryID = models.AutoField(_('Entry Identifier'), primary_key=True)
-        #Chave primaria
-
-    entryDueDate = models.DateField(_('Due Date'))
-        #Data de pagamento.
-
-    entryRegistrationDate = models.DateField(_('Registration Date'))
-        #Date registration of accounting
-
-    entryDescription = models.TextField(_('Entry Description'), max_length=150, blank=True)
-        #Descricao de uma contabil
-
-    entryValue = models.DecimalField(_('Entry Value'), decimal_places=2, max_digits=12)
-        #Registro do valor do contabel
-
-    entrySource = models.CharField(_('Entry Source'), max_length=50, blank=True)
-        #Empresa/Organizacao/Entidade fonte da requisicao do contabil
-
-    entryQuotaAmount = models.IntegerField(_('Entry Quota Amount'), default=1)
-        #Quantidade de parcelas
-
-    entryType = models.CharField(_('Entry Type'), choices=OPTIONS, max_length=20)
-
-    periodicity = models.ForeignKey(Periodicity, verbose_name=_('Periodicity'))
-        #Relacionamento de 1 pra n com Periodicidade
-
-    user = models.ForeignKey(User, verbose_name=_('User'))
-        #Relacionamento de 1 pra n com Usuario
-
-    category = models.ForeignKey(CategoryRecord, verbose_name=_('Category'))
-        #Relacionamento de 1 pra n com Categoria de lancamento
-
     def __str__(self):
-        return self.entryDescription
+        return self.category_name
 
+class Entry(models.Model):
 
-class UserProfile(models.Model):
+    """Classe responsavel por manter os dados em comuns de receitas e despesas"""
+    """In Portuguese: Lancamento"""
 
-    """Classe que representa o perfil de um usuario"""
-    """In Portuguese: Perfil de Usuario"""
+    # Empresa/Organizacao/Entidade fonte da requisicao do Lancamento
+    entry_source = models.CharField(_('Entry Source'), max_length=50, blank=True)
 
-    user = models.OneToOneField(User)
+    # Registro do Valor do Lancamento
+    entry_value = models.DecimalField(_('Entry Value'), decimal_places=2, max_digits=12)
+    
+    # Data de Vencimento
+    entry_due_date = models.DateField(_('Due Date'))
 
-    DF = 'DF'
-    MG = 'MG'
-    SP = 'SP'
+    # Data de Registro do Lancamento
+    entry_registration_date = models.DateField(_('Registration Date'))
 
-    STATES = (
-    (DF, 'DF'),
-    (MG, 'MG'),
-    (SP, 'SP'),
+    # Descricao do Lancamento
+    entry_description = models.TextField(_('Entry Description'), max_length=150, blank=True)
+
+    # Quantidade de Parcelas
+    entry_quota_amount = models.PositiveIntegerField(_('Entry Quota Amount'), default=1)
+
+    # Tipo de Periodicidade do Lancamento
+    entry_periodicity = models.CharField(_('Entry Periodicity Type'), choices=Finance.PERIODICITY, default=Finance.MONTHLY, max_length=20)
+    
+    # Tipo do Lancamento
+    entry_type = models.CharField(_('Entry Type'), choices=Category.ENTRY_TYPE, default=Category.EXPENSE, max_length=20)
+
+    # Relacionamento de 1 pra n com Categoria de lancamento
+    category = models.ForeignKey(Category, verbose_name=_('Entry Category'))
+
+    # Relacionamento de 1 pra n com Usuario
+    entry_user = models.ForeignKey(User, verbose_name=_('User'))
+
+    # Valores Possiveis de Estado de Valor e Parcela
+    OVERDUE = _('Overdue')
+    NO_OVERDUE = _('No Overdue Yet')
+    ALL_ENTRY = _('All Entry')
+
+    # Enum de Estado de um Valor
+    VALUE_STATE = (
+        (OVERDUE, _('Overdue')),
+        (NO_OVERDUE, _('No Overdue Yet')),
+        (ALL_ENTRY, _('All Entry')),
     )
 
-    cpf = models.CharField(_('cpf'),max_length=14,
-        help_text=_('Use format ???.???.???-??'),
-        validators=[
-            validators.RegexValidator(r'^[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}$',_('Wrong Format!'), 'invalid'),
-        ], blank=True)
-    rg = models.CharField(_('rg'),max_length=9,
-        help_text=_('Use format ?.???.???'),
-        validators=[
-                validators.RegexValidator(r'^[0-9]{1}\.?[0-9]{3}\.?[0-9]{3}$',_('Wrong Format!'), 'invalid'),
-        ], blank=True)
-
-    expeditor = models.CharField(_('Expeditor'),max_length=2, choices=STATES, default=DF, blank=True)
-    job_title = models.CharField(_('Job Title'), max_length=150, blank=True)
-    organization = models.CharField(_('Organization'), max_length=150, blank=True)
+    # Enum de Estado de uma Parcela
+    QUOTA_STATE = (
+        (OVERDUE, _('Overdue')),
+        (NO_OVERDUE, _('No Overdue Yet')),
+    )
 
     def __str__(self):
-        return self.user.username
+        return self.entry_description
