@@ -1,0 +1,17 @@
+language: python
+
+env:
+	- DJANGO=1.7
+
+python:
+	- "3.3"
+
+install:
+	- sudo apt-get install python3 python-pip
+	- sudo apt-get install python-psycopg2
+	- sudo pip install django-bootstrap3
+	- sudo pip install django-zurb-foundation
+
+before_script:
+	- python manage.py makemigrations
+	- python manage.py migrate
