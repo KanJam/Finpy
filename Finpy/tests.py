@@ -13,8 +13,8 @@ class FinpyViewsTestCase(TestCase):
 
 	def test_entry_create(self):
 		response_entry_create = self.client.get('/finpy/entry/create/')
-		self.assertEqual(response_entry_create.status_code, 200)
+		self.assertEqual(response_entry_create.status_code, 302)
 
 	def test_entry_list(self):
 		response_entry_list = self.client.get('/finpy/entry/list/')
-		self.assertEqual(response_entry_list.status_code, 200)
+		self.assertEqual(response_entry_list.status_code, 302)

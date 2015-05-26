@@ -38,9 +38,11 @@ Development project of a financial management system for obtaining curricular co
 
 ### Installation of the other modules
 
-> 1 - Installing psycoepg2 - [sudo apt-get install python-psycopg2]
+> 1 - Installing psycopg2 - [sudo apt-get install python-psycopg2]
 
 > 2 - Installation of bootstrap3 - [sudo pip install django-bootstrap3]
+
+> 3 - Installation of Foundation - [sudo pip install django-foundation]
 
 
 # EqLibra - Sistema de Gerenciamento Financeiro
@@ -79,6 +81,8 @@ Projeto de desenvolvimento de um sistema de gerenciamento financeiro para obten�
 
 ### Instalação dos demais módulos
 
-> 1 - Instalação do psycoepg2 - [sudo apt-get install python-psycopg2]
+> 1 - Instalação do psycopg2 - [sudo apt-get install python-psycopg2]
 
 > 2 - Instalação do bootstrap3 - [sudo pip install django-bootstrap3]
+
+> 3 - Instalação do Foundation - [sudo pip install django-foundation]
