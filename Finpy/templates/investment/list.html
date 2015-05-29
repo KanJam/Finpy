@@ -5,18 +5,15 @@
 
 {% block content %}
 <div id="container">
-{% for simulation in simulations %}
+{% for simulation in simulations reversed%}
   
   <div class="large-12 columns">
   <div class="row">
-    <div class="large-12 panel columns">
-    <div class="large-6 columns">
+    <div class="large-12 panel columns" style="text-align: center;">
+      <h2>{{simulation.result_to_discover}}</h2>
       {% for value in simulation.calculate_investment %}
-        <p>{{ value|floatformat:2 }}</p>
+        <p>{{ forloop.counter }} - {{ value|floatformat:2 }}</p>
       {% endfor %}
-    </div>
-    <div class="large-6 columns" style="text-align: center;">
-    </div>
   </div>
   </div>
 </div>
