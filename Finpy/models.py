@@ -148,7 +148,23 @@ class InvestimentSimulation(models.Model):
     # Tempo de duracao do investimento
     period_value = models.PositiveIntegerField(_('Period Value'), default=1, blank=True, null=True)
 
-    # Itens do Enum
+    # Itens do Enum Resultado A Descobrir
+    PRESENT_VALUE = _('Present Value')
+    FUTURE_VALUE = _('Future Value')
+    PAYMENT_VALUE = _('Payment Value')
+    RATE_VALUE = _('Rate Value')
+    PERIOD_VALUE = _('Period Value')
+
+    # Enum do Tipo Resultado A Descobrir
+    RESULT_TO_DISCOVER = (
+    (PRESENT_VALUE, _('Present Value')),
+    (FUTURE_VALUE, _('Future Value')),
+    (PAYMENT_VALUE, _('Payment Value')),
+    (RATE_VALUE, _('Rate Value')),
+    (PERIOD_VALUE, _('Period Value')),
+    )
+
+    # Itens do Enum Tipo de Simulacao
     FINANCIAL_MATH = _('Financial Math')
     INVESTMENT_RETURN = _('Investment Return')
 
@@ -161,15 +177,55 @@ class InvestimentSimulation(models.Model):
     # Definicao do tipo de investimento
     simulation_type = models.CharField(_('Simulation Type'), choices=SIMULATION_TYPE, default=FINANCIAL_MATH, max_length=30)
 
+    # Definicao do resultado a descobrir
+    result_to_discover = models.CharField(_('Result To Discover'), choices=RESULT_TO_DISCOVER, default=FUTURE_VALUE, max_length=30)
+
     def __str__(self):
         return self.present_value
 
 class SimulationAbstractStrategy:
-    def calculate_investment(simulation_investment): pass
+    def calculate_investment(simulation_investment):
+        if simulation_investment.simulation_type == InvestimentSimulation.FINANCIAL_MATH:
+            if simulation_investment.result_to_discover == InvestimentSimulation.PRESENT_VALUE:
+                result = PresentValueStrategy.calculate_steps(simulation_investment)
+                PresentValueStrategy.validate_result(simulation_investment,result)
+            elif simulation_investment.result_to_discover == InvestimentSimulation.FUTURE_VALUE:
+                result = FutureValueStrategy.calculate_steps(simulation_investment)
+                FutureValueStrategy.validate_result(simulation_investment,result)
 
     def calculate_steps(simulation_investment): pass
 
-    def validate_result(result): pass
+    def validate_result(simulation_investment,result): pass
+
+class PresentValueStrategy(SimulationAbstractStrategy):
+    def calculate_steps(simulation_investment):
+        result = simulation_investment.future_value
+        result_list = [result]
+        for k in range(1, simulation_investment.period_value):
+            result += simulation_investment.future_value/
+            ((1+(simulation_investment.rate_value/100))**k)
+            result_list.append(result)
+        return result_list
+
+    def validate_result(simulation_investment,result):
+        return simulation_investment.future_value/
+            ((1+(simulation_investment.rate_value/100))**
+            (simulation_investment.period_value)) == result
+
+class FutureValueStrategy(SimulationAbstractStrategy):
+    def calculate_steps(simulation_investment):
+        result = simulation_investment.present_value
+        result_list = [result]
+        for k in range(1, simulation_investment.period_value):
+            result += (result*(simulation_investment.rate_value/100))
+            result_list.append(result)
+        return result_list
+
+    def validate_result(simulation_investment,result):
+        return simulation_investment.present_value*
+            ((1+(simulation_investment.rate_value/100))**
+            (simulation_investment.period_value)) == result
+
 
 class Category(models.Model):
 
