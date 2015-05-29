@@ -133,27 +133,43 @@ class InvestimentSimulation(models.Model):
     """Classe responsavel por manter simulacoes de investimento"""
     """In Portuguese: SimulacaoInvestimento"""
 
-    # Catalogo Financeiro Associado
-    finance = models.ForeignKey(Finance, verbose_name=_('InvestimentSimulation\'s Finance'))
+    # Valor presente do investimento
+    present_value = models.DecimalField(_('Present Value'), decimal_places=2, max_digits=12, blank=True, null=True)
 
-    # Valor Investido
-    amount_invested = models.DecimalField(_('Amount Invested'), decimal_places=2, max_digits=12)
+    # Valor futuro do investimento
+    future_value = models.DecimalField(_('Future Value'), decimal_places=2, max_digits=12, blank=True, null=True)
+
+    # Valor do pagamento utilizado na simulacao
+    payment_value = models.DecimalField(_('Payment Value'), decimal_places=2, max_digits=12, blank=True, null=True)
+ 
+    # Valor da taxa
+    rate_value = models.DecimalField(_('Rate Value'), decimal_places=2, max_digits=3, blank=True, null=True)   
     
-    # Juros
-    taxes = models.DecimalField(_('Taxes'), decimal_places=2, max_digits=5)
-    
-    # Quantidade de Parcelas
-    quota = models.PositiveIntegerField(_('Quota'), default=1)
-    
-    # Tipo da Periodicidade dos Juros
-    periodicity_taxes = models.CharField(_('Taxes Periodicity Type'), choices=Finance.PERIODICITY, default=Finance.MONTHLY, max_length=20)
-    
-    # Tipo da Periodicidade das Parcelas
-    quota_taxes = models.CharField(_('Quota Periodicity Type'), choices=Finance.PERIODICITY, default=Finance.MONTHLY, max_length=20)
+    # Tempo de duracao do investimento
+    period_value = models.PositiveIntegerField(_('Period Value'), default=1, blank=True, null=True)
+
+    # Itens do Enum
+    FINANCIAL_MATH = _('Financial Math')
+    INVESTMENT_RETURN = _('Investment Return')
+
+    # Enum de Tipo de Simulacao
+    SIMULATION_TYPE = (
+    (FINANCIAL_MATH, _('Financial Math')),
+    (INVESTMENT_RETURN, _('Investment Return')),
+    )
+
+    # Definicao do tipo de investimento
+    simulation_type = models.CharField(_('Simulation Type'), choices=SIMULATION_TYPE, default=FINANCIAL_MATH, max_length=30)
 
     def __str__(self):
-        return self.amount_invested
+        return self.present_value
 
+class SimulationAbstractStrategy:
+    def calculate_investment(simulation_investment): pass
+
+    def calculate_steps(simulation_investment): pass
+
+    def validate_result(result): pass
 
 class Category(models.Model):
 
