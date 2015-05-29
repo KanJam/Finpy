@@ -126,9 +126,9 @@ class Finance(models.Model):
     )
 
     def __str__(self):
-        return self.currentValue
+        return self.current_value
 
-class InvestimentSimulation(models.Model):
+class InvestmentSimulation(models.Model):
 
     """Classe responsavel por manter simulacoes de investimento"""
     """In Portuguese: SimulacaoInvestimento"""
@@ -180,18 +180,24 @@ class InvestimentSimulation(models.Model):
     # Definicao do resultado a descobrir
     result_to_discover = models.CharField(_('Result To Discover'), choices=RESULT_TO_DISCOVER, default=FUTURE_VALUE, max_length=30)
 
+    simulation_user = models.ForeignKey(User, verbose_name=_('User'))
+
+    def calculate_investment(self):
+        return SimulationAbstractStrategy.calculate_investment(self)
+
     def __str__(self):
-        return self.present_value
+        return str(self.present_value)
 
 class SimulationAbstractStrategy:
     def calculate_investment(simulation_investment):
-        if simulation_investment.simulation_type == InvestimentSimulation.FINANCIAL_MATH:
-            if simulation_investment.result_to_discover == InvestimentSimulation.PRESENT_VALUE:
-                result = PresentValueStrategy.calculate_steps(simulation_investment)
-                PresentValueStrategy.validate_result(simulation_investment,result)
-            elif simulation_investment.result_to_discover == InvestimentSimulation.FUTURE_VALUE:
-                result = FutureValueStrategy.calculate_steps(simulation_investment)
-                FutureValueStrategy.validate_result(simulation_investment,result)
+        if simulation_investment.simulation_type == InvestmentSimulation.FINANCIAL_MATH:
+            if simulation_investment.result_to_discover == InvestmentSimulation.PRESENT_VALUE:
+                result_list = PresentValueStrategy.calculate_steps(simulation_investment)
+                PresentValueStrategy.validate_result(simulation_investment,result_list[-1])
+            elif simulation_investment.result_to_discover == InvestmentSimulation.FUTURE_VALUE:
+                result_list = FutureValueStrategy.calculate_steps(simulation_investment)
+                print(FutureValueStrategy.validate_result(simulation_investment,result_list[-1]))
+        return result_list
 
     def calculate_steps(simulation_investment): pass
 
@@ -199,32 +205,34 @@ class SimulationAbstractStrategy:
 
 class PresentValueStrategy(SimulationAbstractStrategy):
     def calculate_steps(simulation_investment):
-        result = simulation_investment.future_value
-        result_list = [result]
-        for k in range(1, simulation_investment.period_value):
-            result += simulation_investment.future_value/
-            ((1+(simulation_investment.rate_value/100))**k)
+        result = fv = simulation_investment.future_value
+        period = simulation_investment.period_value
+        rate = simulation_investment.rate_value/100
+        result_list = [fv]
+        for k in range(1, period):
+            result = fv/((1 + rate)**k)
             result_list.append(result)
         return result_list
 
     def validate_result(simulation_investment,result):
-        return simulation_investment.future_value/
-            ((1+(simulation_investment.rate_value/100))**
-            (simulation_investment.period_value)) == result
+        # TODO
+        return True
 
 class FutureValueStrategy(SimulationAbstractStrategy):
     def calculate_steps(simulation_investment):
-        result = simulation_investment.present_value
-        result_list = [result]
-        for k in range(1, simulation_investment.period_value):
-            result += (result*(simulation_investment.rate_value/100))
+        result = pv = simulation_investment.present_value
+        period = simulation_investment.period_value
+        rate = simulation_investment.rate_value/100
+        result_list = [pv]
+        for k in range(1, period):
+            #result += (result*rate)
+            result = pv*((1 + rate)**k)
             result_list.append(result)
         return result_list
 
     def validate_result(simulation_investment,result):
-        return simulation_investment.present_value*
-            ((1+(simulation_investment.rate_value/100))**
-            (simulation_investment.period_value)) == result
+        # TODO
+        return True 
 
 
 class Category(models.Model):

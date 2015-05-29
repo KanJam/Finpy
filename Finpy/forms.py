@@ -1,7 +1,7 @@
 from django import forms
 from django.utils.translation import ugettext, ugettext_lazy as _
 from django.contrib.auth.models import User
-from Finpy.models import UserProfile, Entry
+from Finpy.models import UserProfile, Entry, InvestmentSimulation
 
 class UserCreationForm(forms.ModelForm):
     """
@@ -37,6 +37,14 @@ class UserCreationForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
+
+class InvestmentSimulationForm(forms.ModelForm):
+
+    class Meta:
+        model = InvestmentSimulation
+        fields = '__all__'
+        exclude = ['simulation_user']
 
 class ProfileUpdateForm(forms.ModelForm):
 

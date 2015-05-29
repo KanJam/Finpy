@@ -1,0 +1,28 @@
+{% extends "Finpy/base.html" %}
+
+{% load bootstrap3 %}
+{% load i18n %}
+
+{% block content %}
+<div id="container">
+{% for simulation in simulations %}
+  
+  <div class="large-12 columns">
+  <div class="row">
+    <div class="large-12 panel columns">
+    <div class="large-6 columns">
+      {% for value in simulation.calculate_investment %}
+        <p>{{ value|floatformat:2 }}</p>
+      {% endfor %}
+    </div>
+    <div class="large-6 columns" style="text-align: center;">
+    </div>
+  </div>
+  </div>
+</div>
+  <br>
+{% endfor %}
+
+</div>
+
+{% endblock %}
