@@ -1,3 +1,5 @@
+{% load bootstrap3 %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,27 +44,30 @@
         <section class="login-form">
           
           <!-- Form -->
-          <form method="post" action="#" role="login">
+          <form method="post" action="{% url 'django.contrib.auth.views.login' %}" role="login">
             
-            <!-- User Name -->
+            <!-- User Name 
             <img src="../../static/images/logoModificar.png" class="img-responsive" alt="logoLogin" />
             <input type="email" name="email" placeholder="Email" required class="form-control input-lg" value="" />
             
-            <!-- Password -->
+            <!-- Password 
             <input type="password" class="form-control input-lg" id="password" placeholder="Password" required="" />
             <div class="pwstrength_viewport_progress"></div>
             
             <!-- Submit -->
+            {% csrf_token %}
+            {% bootstrap_form form %}
             <button type="submit" name="go" class="btn btn-lg btn-primary btn-block">Entrar</button>
+            <input type="hidden" name="next" value="{{ next }}" />
             <div>
-              <a href="#">Criar uma Conta</a> or <a href="#">Recuperar minha Senha</a>
+              <a href="{% url 'signup' %}">Criar uma Conta</a> or <a href="{% url 'password_reset' %}">Recuperar minha Senha</a>
             </div>
           </form>
           <!-- /.Form -->
           
           <!-- HomePage Return -->
           <div class="form-links">
-            <a href="homepage.html">Home Page EqLibra</a>
+            <a href="{% url 'index' %}">Home</a>
           </div>
         </section>
         <!-- /.Section -->

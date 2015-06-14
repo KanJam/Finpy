@@ -1,3 +1,6 @@
+{% load bootstrap3 %}
+{% load i18n %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,7 +46,7 @@
                 </button>
             <!-- Nao funfa-->
 
-                <a class="navbar-brand" href="pageLogin.html">Logar no Sistema</a>
+                <a class="navbar-brand" href="{% url 'login' %}">Logar no Sistema</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
