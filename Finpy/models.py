@@ -197,6 +197,10 @@ class SimulationAbstractStrategy:
             elif simulation_investment.result_to_discover == InvestmentSimulation.FUTURE_VALUE:
                 result_list = FutureValueStrategy.calculate_steps(simulation_investment)
                 FutureValueStrategy.validate_result(simulation_investment,result_list[-1])
+        elif simulation_investment.simulation_type == InvestmentSimulation.INVESTMENT_RETURN:
+        	if simulation_investment.result_to_discover == InvestmentSimulation.PERIOD_VALUE:
+        		result_list = PayBackStrategy.calculate_steps(simulation_investment)
+        		PayBackStrategy.validate_result(simulation_investment, result_list[0])
         return result_list
 
     def calculate_steps(simulation_investment): pass
@@ -220,6 +224,7 @@ class PresentValueStrategy(SimulationAbstractStrategy):
         rate = simulation_investment.rate_value/100
         return fv/((1 + rate)**period) == result
 
+
 class FutureValueStrategy(SimulationAbstractStrategy):
     def calculate_steps(simulation_investment):
         result = pv = simulation_investment.present_value
@@ -236,6 +241,23 @@ class FutureValueStrategy(SimulationAbstractStrategy):
         period = simulation_investment.period_value
         rate = simulation_investment.rate_value/100
         return pv*((1 + rate)**period) == result
+
+
+class PayBackStrategy(SimulationAbstractStrategy):
+    def calculate_steps(simulation_investment):
+    	pv = simulation_investment.present_value
+    	pmt = simulation_investment.payment_value
+    	result_list = [pv/pmt]
+    	pv -= pmt
+    	while pv > 0:
+    		result_list.append(pv/pmt)
+    		pv -= pmt
+    	return result_list
+
+    def validate_result(simulation_investment,result):
+        pv = simulation_investment.present_value
+        pmt = simulation_investment.payment_value
+        return pv/pmt == result
 
 
 class Category(models.Model):
