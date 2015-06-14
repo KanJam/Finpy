@@ -1,0 +1,25 @@
+{% extends "Finpy/base.html" %}
+
+{% load bootstrap3 %}
+{% load i18n %}
+
+{% block content %}
+<div id="container">
+{% for simulation in simulations reversed%}
+  
+  <div class="large-12 columns">
+  <div class="row">
+    <div class="large-12 panel columns" style="text-align: center;">
+      <h2>{{simulation.result_to_discover}}</h2>
+      {% for value in simulation.calculate_investment %}
+        <p>{{ forloop.counter }} - {{ value|floatformat:2 }}</p>
+      {% endfor %}
+  </div>
+  </div>
+</div>
+  <br>
+{% endfor %}
+
+</div>
+
+{% endblock %}
