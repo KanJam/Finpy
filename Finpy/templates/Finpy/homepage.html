@@ -20,12 +20,23 @@
     <!-- Custom CSS -->
     <link href="../../static/css/style-homepage.css" rel="stylesheet">
 
+    <!-- Custom JS-->
+    <script src="../../static/js/jquery.min.js"></script>
+    <script src="../../static/js/bootstrap.min.js"></script>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+   <style>
+  .carousel-inner > .item > img,
+  .carouselnner > .item > a > img {
+      width: 70%;
+      margin: auto;
+  }
+  </style>
 
 </head>
 
@@ -71,13 +82,62 @@
     <!-- Image Background Page Header -->
     <!-- Note: The background image is set within the business-casual.css file. -->
     <header class="business-header">
-        <div class="container">
+        
+
+
+
+
+
+<div class="container-fluid">        
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel"> 
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+
+                          <!-- Indicadores -->
+              <!-- Colagem de Imagens Para exibição -->
+              <div class="carousel-inner" role="listbox">
+                <div class="item active" align="center">
+                  <a href="#" target="_blanck">
+                    <img src="../../static/images/Propaganda03.jpg" height="768" width="1024"></a>
+                </div>
+
+                <div class="item" align="center">
+                    <a href="#">
+                      <img src="../../static/images/Propaganda02.jpg" height="768" width="1024">
+                    </a>
+                </div>
+
+                <div class="item" align="center">
+                    <a href="#"><img src="../../static/images/Propaganda01.jpg" height="768" width="1024"></a>
+                </div>
+              </div>
+
+            <!-- Controle de Setas -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+            </a>
+
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+               <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+               <span class="sr-only">Next</span>
+            </a>            
+        </div>
+  </div>
+
+
+
+
+        <!--<div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="tagline">EqLibra - Sistema Financeiro</h1>
                 </div>
             </div>
-        </div>
+        </div>-->
     </header>
 
     <!-- Page Content -->
@@ -130,18 +190,18 @@
 
             <div class="col-sm-4">
                 <h2>Registrar diversos Lançamentos</h2>
-                <p>These marketing boxes are a great place to put some information. These can contain summaries of what the company does, promotional information, or anything else that is relevant to the company. These will usually be below-the-fold.</p>
-                <img class="img-circle img-responsive img-center" src="http://placehold.it/300x300" alt="">
+                <p>A partir da interface detalhadamente desenhada é possível inserir, alterar e remover as suas receitas e despesas. Além disso, fica maais fácil manter o controle sobre essas informações quando é possível gerar um relatório detalhado sobre eles.</p>
+                <img class="img-circle img-responsive img-center" src="../../static/images/Propaganda01.jpg" alt="">
             </div>
             <div class="col-sm-4">
                 <h2>Visualizar Dicas Financeiras</h2>
-                <p>The images are set to be circular and responsive. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-                <img class="img-circle img-responsive img-center" src="http://placehold.it/300x300" alt="">
+                <p>Sabe aquela pulga atras da orelha quanto a um investimento ou financiamento? Pois é, com o EqLibra esse problema será ligeiramente reduzido, pois este sistema conta com um mecânismo de dicas financeiras que permite o usuário conhecer muita mais sobre o universo financeiro.</p>
+                <img class="img-circle img-responsive img-center" src="../../static/images/Propaganda03.jpg" alt="">
             </div>
             <div class="col-sm-4">
                 <h2>Efetuar Simulações de Aquisição</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-                <img class="img-circle img-responsive img-center" src="http://placehold.it/300x300" alt="">
+                <p>Você deseja realizar algumas aquisição em um determinado tempo? Não sabe como fazer isso? Pois então a solução para seus apareceu! O EqLibra conta com um sistema de simulação financeira no qual permite você calcular diversos invertimentos do seu modo, do seu gosto!</p>
+                <img class="img-circle img-responsive img-center" src="../../static/images/Propaganda02.jpg" alt="">
             </div>
         </div>
         <!-- /.row -->
