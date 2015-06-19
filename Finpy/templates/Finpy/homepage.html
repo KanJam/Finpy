@@ -1,5 +1,5 @@
-{% load bootstrap3 %}
-{% load i18n %}
+<!--{% load bootstrap3 %}-->
+<!--{% load i18n %}-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,13 +30,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-   <style>
-  .carousel-inner > .item > img,
-  .carouselnner > .item > a > img {
-      width: 70%;
-      margin: auto;
-  }
-  </style>
+
 
 </head>
 
@@ -47,26 +41,25 @@
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
            
-           <!-- Nao funfa-->
+           <!-- Component responsivity-->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
+                    <span class="sr-only"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-            <!-- Nao funfa-->
-
                 <a class="navbar-brand" href="{% url 'login' %}">Logar no Sistema</a>
             </div>
+
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">Sobre o Sistema</a>
+                        <a href="about.html">Sobre o Sistema</a>
                     </li>
                     <li>
-                        <a href="#">Serviços Oferecidos</a>
+                        <a href="service.html">Serviços Oferecidos</a>
                     </li>
                     <li>
                         <a href="#">Contatos</a>
@@ -82,63 +75,16 @@
     <!-- Image Background Page Header -->
     <!-- Note: The background image is set within the business-casual.css file. -->
     <header class="business-header">
-        
-
-
-
-
-
-<div class="container-fluid">        
-        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel"> 
-            <ol class="carousel-indicators">
-                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-            </ol>
-
-                          <!-- Indicadores -->
-              <!-- Colagem de Imagens Para exibição -->
-              <div class="carousel-inner" role="listbox">
-                <div class="item active" align="center">
-                  <a href="#" target="_blanck">
-                    <img src="../../static/images/Propaganda03.jpg" height="768" width="1024"></a>
-                </div>
-
-                <div class="item" align="center">
-                    <a href="#">
-                      <img src="../../static/images/Propaganda02.jpg" height="768" width="1024">
-                    </a>
-                </div>
-
-                <div class="item" align="center">
-                    <a href="#"><img src="../../static/images/Propaganda01.jpg" height="768" width="1024"></a>
-                </div>
-              </div>
-
-            <!-- Controle de Setas -->
-            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                  <span class="sr-only">Previous</span>
-            </a>
-
-            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-               <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-               <span class="sr-only">Next</span>
-            </a>            
-        </div>
-  </div>
-
-
-
-
-        <!--<div class="container">
+        <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="tagline">EqLibra - Sistema Financeiro</h1>
+                    <br>
+                    <center><a href="homepage.html"><img src="../../static/images/logo.png"></a></center>
                 </div>
             </div>
-        </div>-->
+        </div>
     </header>
+
 
     <!-- Page Content -->
     <div class="container">
@@ -150,7 +96,9 @@
             <div class="col-sm-8">
 
                 <!-- System Description -->
-                <h2>Sobre o Sistema</h2>
+                <div class="col-lg-12">
+                    <h1 class="tagline">Sobre o Sistema</h1>
+                </div>
                 <p class="justified-text">O <b>EqLibra</b> - <i>Sistema de Gerenciamento Financeiro </i>, trata-se de uma solução de software, na forma de um Web Site, com o objetivo de auxiliar pessoas na gerência e controle das finanças pessoais.
                 </p>
                 
@@ -161,7 +109,7 @@
                 </p>
                
                 <p>
-                    <a class="btn btn-default btn-lg" href="#">Leia Mais &raquo;</a>
+                    <a class="btn btn-default btn-lg" href="about.html">Leia Mais &raquo;</a>
                 </p>
             </div>
 
@@ -180,50 +128,68 @@
         </div>
         <!-- /.row -->
 
-        <hr>
+        <!-- Services -->
+        <hr class="featurette-divider">
 
+        <div class="col-lg-12">
+            <h1 class="tagline">Você pode</h1>
+        </div>
+
+        <div class="row featurette">
+            <div class="col-md-7">
+                <a href="service.html"><h2 class="featurette-heading"> Registrar diversos Lançamentos</a>
+                <p class="lead">A partir da interface detalhadamente desenhada é possível inserir, alterar e remover as suas receitas e despesas. Além disso, fica maais fácil manter o controle sobre essas informações quando é possível gerar um relatório detalhado sobre eles.</p>
+            </div>
+            <div class="col-md-5">
+                <a href="service.html"><img class="featurette-image img-circle img-responsive center-block" src="../../static/images/Propaganda01.jpg" alt="Generic placeholder image"></a>
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7 col-md-push-5">
+                <a href="service.html"><h2 class="featurette-heading">Visualizar Dicas Financeiras</a>
+                <p class="lead">Sabe aquela pulga atras da orelha quanto a um investimento ou financiamento? Pois é, com o EqLibra esse problema será ligeiramente reduzido, pois este sistema conta com um mecânismo de dicas financeiras que permite o usuário conhecer muita mais sobre o universo financeiro.</p>
+            </div>
+            <div class="col-md-5 col-md-pull-7">
+                <a href="service.html"><img class="featurette-image img-circle img-responsive center-block" src="../../static/images/Propaganda03.jpg" alt="Generic placeholder image"></a>
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7">
+                <a href="service.html"><h2 class="featurette-heading"> Efetuar Simulações de Aquisição</a>
+                <p class="lead">Você deseja realizar algumas aquisição em um determinado tempo? Não sabe como fazer isso? Pois então a solução para seus apareceu! O EqLibra conta com um sistema de simulação financeira no qual permite você calcular diversos invertimentos do seu modo, do seu gosto!</p>
+            </div>
+            <div class="col-md-5">
+                <a href="service.html"><img class="featurette-image img-circle img-responsive center-block" src="../../static/images/Propaganda02.jpg" alt="Generic placeholder image"></a>
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <!-- /END THE FEATURETTES -->
+        
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer>
         <div class="row">
-
             <div class="col-lg-12">
-                <h1 class="tagline">Você pode:</h1>
-            </div>
-
-            <div class="col-sm-4">
-                <h2>Registrar diversos Lançamentos</h2>
-                <p>A partir da interface detalhadamente desenhada é possível inserir, alterar e remover as suas receitas e despesas. Além disso, fica maais fácil manter o controle sobre essas informações quando é possível gerar um relatório detalhado sobre eles.</p>
-                <img class="img-circle img-responsive img-center" src="../../static/images/Propaganda01.jpg" alt="">
-            </div>
-            <div class="col-sm-4">
-                <h2>Visualizar Dicas Financeiras</h2>
-                <p>Sabe aquela pulga atras da orelha quanto a um investimento ou financiamento? Pois é, com o EqLibra esse problema será ligeiramente reduzido, pois este sistema conta com um mecânismo de dicas financeiras que permite o usuário conhecer muita mais sobre o universo financeiro.</p>
-                <img class="img-circle img-responsive img-center" src="../../static/images/Propaganda03.jpg" alt="">
-            </div>
-            <div class="col-sm-4">
-                <h2>Efetuar Simulações de Aquisição</h2>
-                <p>Você deseja realizar algumas aquisição em um determinado tempo? Não sabe como fazer isso? Pois então a solução para seus apareceu! O EqLibra conta com um sistema de simulação financeira no qual permite você calcular diversos invertimentos do seu modo, do seu gosto!</p>
-                <img class="img-circle img-responsive img-center" src="../../static/images/Propaganda02.jpg" alt="">
+                <center>
+                    <p>Copyright &copy;</p>
+                    <p><b>Equipe Modesteam</b> 2015
+                    <a href="https://github.com/KanJam/Finpy/wiki"><img class="img-responsive" src="../../static/images/git.png" width="40px"></a>
+                    </p>
+                </center>
             </div>
         </div>
         <!-- /.row -->
-        
-        <!-- Custom Line -->
-        <hr>
-
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <center>
-                    <p>Copyright &copy;</p>
-                    <p><b>Equipe Modesteam</b> 2015</p>
-                    </center>
-                </div>
-            </div>
-            <!-- /.row -->
-        </footer>
-
-    </div>
-    <!-- /.container -->
+    </footer>
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>

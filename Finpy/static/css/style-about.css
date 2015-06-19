@@ -10,9 +10,10 @@ body {
 
 /* Header Image Background - Change the URL below to your image path (example: ../images/background.jpg) */
 
+
 .business-header {
-    height: 200px;
-    background: url('../images/bg.jpg') center center no-repeat scroll;
+    height: 300px;
+    background: url('../images/sistemaFinanceiro1.jpg') no-repeat scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -53,5 +54,6 @@ a:link
 } 
 
 footer {
-    margin: 50px 0;
+    background-color: #292929;
+    color: #ffffff;
 }
