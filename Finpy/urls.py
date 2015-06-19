@@ -4,6 +4,8 @@ from Finpy import views
 
 urlpatterns = patterns('',
                         url(r'^$', views.index, name='index'),
+                        url(r'^about.html', views.about_page),
+                        url(r'^service.html', views.service_page),
                         url(r'^signup/$', views.signup, {'template_name': 'accounts/signup.html'}, name='signup'),
                         url(r'^entry/create/$', views.create_entry, name='create_entry'),
                         url(r'^entry/list/$', views.list_entry, name='list_entry'),

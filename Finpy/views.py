@@ -11,6 +11,12 @@ from Finpy.forms import UserCreationForm, ProfileUpdateForm, EntryForm, Investme
 
 # Create your views here.
 
+def about_page(request, template_name='Finpy/about.html'):
+    return TemplateResponse(request, template_name)
+
+def service_page(request, template_name='Finpy/service.html'):
+    return TemplateResponse(request, template_name)
+
 @login_required
 def index(request, template_name='Finpy/homepage.html'):
     context = {
