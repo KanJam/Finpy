@@ -18,7 +18,7 @@
     <link href="../../static/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../../static/css/style-homepage.css" rel="stylesheet">
+    <link href="../../static/css/style-about.css" rel="stylesheet">
 
     <!-- Custom JS-->
     <script src="../../static/js/jquery.min.js"></script>
@@ -40,8 +40,8 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
-           
-           <!-- Nao funfa-->
+
+           <!-- Component responsivity-->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
@@ -49,10 +49,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-            <!-- Nao funfa-->
-
                 <a class="navbar-brand" href="{% url 'login' %}">Logar no Sistema</a>
             </div>
+
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
@@ -92,35 +91,95 @@
         <hr>
 
         <div class="row">
-            <div class="col-sm-8">
+            <div class="col-sm-12">
 
                 <!-- System Description -->
-                <h2>Sobre o Sistema</h2>
-                <p class="justified-text">O <b>EqLibra</b> - <i>Sistema de Gerenciamento Financeiro </i>, trata-se de uma solução de software, na forma de um Web Site, com o objetivo de auxiliar pessoas na gerência e controle das finanças pessoais.
-                </p>
-                
-                <p class="justified-text">Nesse âmbito, considera-se desde as atividades básicas para acompanhamento do fluxo de caixa, tais como lançamentos de receitas e despesas por categoria, até simulações de investimentos para metas pessoais de vida.
-                </p>
-                
-                <p class="justified-text">É importante ressaltar que finanças é um assunto muito importante, visto que praticamente todas as pessoas obtêm receitas, além de exercerem atividades como gastar ou investir um determinado capital. Na verdade, o gerenciamento das finanças pessoais está diretamente associado às decisões, tais como realizar investimentos ou financiamentos, por exemplo.
-                </p>
-               
-                <p>
-                    <a class="btn btn-default btn-lg" href="#">Leia Mais &raquo;</a>
-                </p>
-            </div>
 
-            <div class="col-sm-4">
-                <h3 class="development-team">Sobre os Desenvolvedores</h3>
-                    <h4 class="development-team">Equipe Modesteam</h4>
-                    <br><center>
-                    <img src="../../static/images/Modesteam.png" height="140px" alt="Responsive image" class="img-circle">
-                    <br>
-                <address>
-                    <br>
-                    <abbr title="Email">E-mail:</abbr> <a href="#">suporte@modesteam.com</a>
-                    </center>
-                </address>
+                <!-- Context -->
+                <div class="col-lg-12">
+                    <h1 class="tagline">Contexto Histórico</h1>
+                </div>
+                <p class="justified-text">Antes de tudo, é importante estabelecer uma breve contextualização econômica do Brasil. Após a crise financeira internacional, ocorrida em 2008, várias economias declararam um processo recessivo e uma acentuada desaceleração da atividade econômica. Diante desse cenário, o governo federal brasileiro colocou em prática um conjunto de medidas anticrise centralizadas em estimular a manutenção do gasto tanto público quanto privado. </p>
+
+                <p class="justified-text">Assim, reforçou-se a atuação dos bancos públicos (BNDES, Banco do Brasil e Caixa Econômica Federal) no mercado de crédito doméstico. Adicionalmente, adotou-se uma política de incentivos fiscais em setores específicos da atividade econômica como, por exemplo, veículos, eletroeletrônicos, eletrodomésticos, materiais de construção etc. </p>
+
+                <p class="justified-text">A partir desse conjunto de medidas, o mercado consumidor e o mercado de crédito responderam de maneira muita favorável. Contudo, a grande maioria do conjunto de medidas adotadas foi mantida produzindo superaquecimento da economia, além de crescimento acelerado e acentuado do endividamento do consumidor, passando de 32,2 % da renda disponível em dezembro de 2008 para 41,7 % em agosto de 2012, segundo dados do Banco Central do Brasil. Com a contemplação do aumento da inadimplência do consumidor em 2011/2012, duas deficiências estruturais do mercado de crédito brasileiro foram evidenciadas: </p>
+                <p class="justified-text"> 1) a ausência de um cadastro positivo operando em sua plenitude e; </p>
+                <p class="justified-text"> 2) o grau inadequado de educação financeira do brasileiro. </p>
+                
+                <br>
+                <p class="justified-text">A ausência do cadastro positivo impossibilita que as instituições financeiras façam uma distinção eficaz entre o bom e o mau pagador e, assim, acabam concedendo crédito para consumidores que não possuem a menor capacidade de absorver volumes adicionais de compromissos financeiros. Adicionalmente, o excesso de endividamento como fator gerador da inadimplência requer a criação de ferramentas adequadas de verificação do grau de educação financeira do brasileiro. Nesse âmbito, não só o poder público, os agentes de crédito e as instituições financeiras podem desenvolver ações destinadas à resolução de problemas associados à educação financeira, mas a sociedade como um todo pode contribuir também. </p>
+
+                <p class="justified-text">Dessa forma, surge o <b>EqLibra</b> - <i>Sistema de Gerenciamento Financeiro </i>, com o intuito de fornecer praticidade e auxílio na administração das finanças pessoais. Tendo em vista os problemas citados anteriormente, o sistema também incluirá dicas de educação financeira. </p>
+
+                <!-- About System -->
+                <div class="col-lg-12">
+                    <h1 class="tagline">Sobre o Sistema</h1>
+                </div>
+                <p class="justified-text">O <b>EqLibra</b> - <i>Sistema de Gerenciamento Financeiro </i>, trata-se de uma solução de software, na forma de um Web Site, com o objetivo de auxiliar pessoas na gerência e controle das finanças pessoais. Nesse âmbito, considera-se desde as atividades básicas para acompanhamento do fluxo de caixa, tais como lançamentos de receitas e despesas por categoria, até simulações de investimentos para metas pessoais de vida. </p>
+
+                <p class="justified-text">É importante ressaltar que finanças é um assunto muito importante, visto que praticamente todas as pessoas obtêm receitas, além de exercerem atividades como gastar ou investir um determinado capital. Na verdade, o gerenciamento das finanças pessoais está diretamente associado às decisões, tais como realizar investimentos ou financiamentos, por exemplo. </p>
+
+                <p class="justified-text">A partir de todos os aspectos citados anteriormente, considera-se o como uma importante ferramenta para contribuição da organização pessoal, fomentando o senso crítico financeiro. </p>           
+            </div>
+            
+            <!-- Members -->
+            <div class="col-sm-12">
+                <div class="col-lg-12">
+                    <h1 class="tagline">Sobre os Desenvolvedores</h1>
+                </div>
+                        <br><br><div class="col-sm-3">
+                            <br><center>
+                            <img src="../../static/images/Modesteam.png" height="280px" alt="Responsive image" class="img-circle"><br>
+                            <address>
+                                <br><abbr title="Email">E-mail:</abbr> <a href="#">suporte@modesteam.com</a>
+                            </address>
+                            </center>
+                            <h4 class="development-team">Equipe Modesteam</h4>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="row">
+                              <div class="col-sm-6 col-md-3">
+                                <div class="thumbnail">
+                                  <img src="../../static/images/andre.jpg" height="80px" width="130px" alt="Responsive image">
+                                  <div class="caption">
+                                    <center><h3>André <br> Guedes</h3></center>
+                                    <p class="componet-description">Estudante de Eng. de Software da Universidade de Brasilia - FGA, membro do projeto Software Público do Ministério do Planejamento.</p>
+                                    </div>
+                                </div>
+                              </div>
+                            
+                            <div class="col-sm-6 col-md-3">
+                                <div class="thumbnail">
+                                  <img src="../../static/images/augusto.jpg" height="80px" width="80px" alt="Responsive image">
+                                  <div class="caption">
+                                    <center><h3>Augusto Modesto</h3></center>
+                                    <p class="componet-description">Estudante de Eng. de Software da Universidade de Brasilia - FGA, membro do projeto Modelagem de Processos do Ministério das Comunicações.</p>
+                                    </div>
+                                </div>
+                              </div>
+                            
+                            <div class="col-sm-6 col-md-3">
+                                <div class="thumbnail">
+                                  <img src="../../static/images/jonathan.jpg" height="80px" width="130px" alt="Responsive image">
+                                  <div class="caption">
+                                    <center><h3>Jonathan Morais</h3></center>
+                                    <p class="componet-description">Estudante de Eng. de Software da Universidade de Brasilia - FGA, scrum master do projeto Fábrica de Software do Cespe - Serpro.</p>
+                                    </div>
+                                </div>
+                              </div>
+                            
+                            <div class="col-sm-6 col-md-3">
+                                <div class="thumbnail">
+                                  <img src="../../static/images/matheus.jpg" height="80px" width="55px" alt="Responsive image">
+                                  <div class="caption">
+                                    <center><h3>Matheus Ferraz</h3></center>
+                                    <p class="componet-description">Estudante de Eng. de Software da Universidade de Brasilia - FGA, desenvolvedor membro do projeto Fábrica de Software do Cespe - Serpro.</p>
+                                    </div>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
             </div>
         </div>
         <!-- /.row -->
