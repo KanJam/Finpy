@@ -10,10 +10,26 @@
   <div class="large-12 columns">
   <div class="row">
     <div class="large-12 panel columns" style="text-align: center;">
-      <h2>{{simulation.result_to_discover}}</h2>
-      {% for value in simulation.calculate_investment %}
-        <p>{{ forloop.counter }} - {{ value|floatformat:2 }}</p>
-      {% endfor %}
+      <table class="responsive">
+        <thead>
+          <tr>
+            <td>Tipo de Simulação:</td>
+            <td>{{simulation.result_to_discover}}</td>
+          </tr>
+          <tr>
+            <td>Período</td>
+            <td>Valor</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for value in simulation.calculate_investment %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ value|floatformat:2 }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
   </div>
   </div>
 </div>

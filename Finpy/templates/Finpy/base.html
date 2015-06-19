@@ -41,7 +41,7 @@
                           <li class="name">
                             <h1>
                               <a href="/">
-                                EqLibra
+                                <img src="/static/images/logo_white.png" width="15%" height="15%">
                               </a>
                             </h1>
                           </li>
@@ -50,9 +50,9 @@
                      
                         <section class="top-bar-section">
                           {% if user.is_authenticated %} 
-                              <ul class="right">
-                                <li class="divider"></li>
-                                <li class="has-dropdown">
+                          <ul class="right">
+                                <li class="divider"	></li>
+	                                <li class="has-dropdown">
                                   <a href="#">{% trans 'Entries'%}</a>
                                   <ul class="dropdown">
                                     <li><a href="{% url 'create_entry'%}">{% trans 'New'%}</a></li>
@@ -98,41 +98,22 @@
 				     
 				              <p>Fazendo um bom diagnóstico da sua vida financeira, você poderá saber onde está gastando mais, para cortar despesas desnecessárias e dar um destino adequado ao dinheiro que sobra em caixa.</p><hr>
 				            {% endblock %}
-				          <div class="row">
-				            <div class="large-4 columns">
-				            <a href="#" class="small button">Link</a>
-				            </div>
-				          </div>
 				        </div>
 				     
 				        <div class="large-9 columns">
 				          <div class="panel">
 				            <div class="row">
-				              <div class="large-12 columns">
-                      {% block content %}
-                      {% endblock %}
-                      </div>
-				            </div>
-				          </div>
-				     
-				          <div class="row">
-				            <div class="large-6 columns">
-				              <div class="panel">
-				                <h5>Dicas</h5>
-				                <p>Veja todas as dicas financeiras!.</p>
-				                <a href="#" class="small button">Link</a>
-				              </div>
+				              	<div class="large-12 columns">
+                      				{% block content %}
+                      				{% endblock %}
+                      			</div>
 				            </div>
 				          </div>
 				        </div>
 				      </div>
 				      <footer class="row">
 				      <div class="large-12 columns"><hr/>
-				          <div class="row">
-				            <div class="large-6 columns">
-				                <p>© Copyright no one at all. Go to town.</p>
-				            </div>
-				          </div>
+				            <center><img src="/static/images/footer.png"></center>
 				      </div>
 				      </footer>
 				    {% endblock base_body %}
@@ -156,7 +137,7 @@
 				    {% block foundation_js_init %}
 				    <script>
 				        $(document).foundation();
-                $(document).confirmWithReveal({
+                		$(document).confirmWithReveal({
                 	title: "{% trans 'Are you sure?' %}",
                 	body: "{% trans 'This action cannot be undone.' %}",
                 	ok: "{% trans 'Confirm'%}",
