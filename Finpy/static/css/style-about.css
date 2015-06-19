@@ -47,6 +47,11 @@ body {
     text-align: justify;
 }
 
+a:link 
+{ 
+ text-decoration:none; 
+} 
+
 footer {
     margin: 50px 0;
 }
