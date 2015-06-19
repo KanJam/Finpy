@@ -4,10 +4,12 @@ from django.contrib.auth.models import User
 from Finpy.models import UserProfile, Entry, InvestmentSimulation
 
 class UserCreationForm(forms.ModelForm):
+    
+    """Classe UserCreationForm. Classe que possui
+    os tratamentos inerentes à lógica dos formulários
+    existentes na página de criação de usuário.
     """
-    A form that creates a user, with no privileges, from the given username and
-    password.
-    """
+
     error_messages = {
         'password_mismatch': _("The two password fields didn't match."),
     }
@@ -18,6 +20,12 @@ class UserCreationForm(forms.ModelForm):
         help_text=_("Enter the same password as above, for verification."))
 
     class Meta:
+
+        """Classe Meta. Classe que define as informações
+        que serão utilizadas com base no conjunto já existente
+        da Model User do framework Django.
+        """
+
         model = User
         fields = ("username","first_name","last_name","email")
 
@@ -41,21 +49,57 @@ class UserCreationForm(forms.ModelForm):
 
 class InvestmentSimulationForm(forms.ModelForm):
 
+    """Classe InvestmentSimulationForm. Classe que possui
+    os tratamentos inerentes à lógica dos formulários
+    existentes na página de preenchimento de informações
+    para a simulação de investimento.
+    """
+
     class Meta:
+
+        """Classe Meta. Classe que define as informações
+        que serão utilizadas com base no conjunto existente
+        na Model InvestmentSimulation.
+        """
+
         model = InvestmentSimulation
         fields = '__all__'
         exclude = ['simulation_user']
 
 class ProfileUpdateForm(forms.ModelForm):
 
+    """Classe ProfileUpdateForm. Classe que possui
+    os tratamentos inerentes à lógica dos formulários
+    existentes na página de atualização das informações
+    do usuário.
+    """
+
     class Meta:
+
+        """Classe Meta. Classe que define as informações
+        que serão utilizadas com base no conjunto já existente
+        da Model UserProfile.
+        """
+
         model = UserProfile
         fields = '__all__'
         exclude = ['user',]
 
 class EntryForm(forms.ModelForm):
 
+    """Classe EntryForm. Classe que possui
+    os tratamentos inerentes à lógica dos formulários
+    existentes na página de inserção de lançamentos
+    de receitas e despesas.
+    """
+
     class Meta:
+
+        """Classe Meta. Classe que define as informações
+        que serão utilizadas com base no conjunto já existente
+        da Model Entry.
+        """
+
         model = Entry
         fields = '__all__'
         exclude = ['entry_user']

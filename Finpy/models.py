@@ -5,8 +5,11 @@ from django.contrib.auth.models import User
 
 class UserProfile(models.Model):
 
-    """Classe que representa o perfil de um usuario"""
-    """In Portuguese: Perfil de Usuario"""
+    """Classe UserProfile. Classe que possui
+    as informações inerentes ao Perfil do Usuário.
+    Realiza extensão da Model fornecida pelo próprio
+    framework Django com informações básicas de usuário.
+    """
 
     # Usuario Associado
     user = models.OneToOneField(User)
@@ -96,12 +99,20 @@ class UserProfile(models.Model):
 
     
     def __str__(self):
+        
+        """Método de conversão para
+        o formato string.
+        """
+
         return self.user.username
 
 class Finance(models.Model):
 
-    """Classe responsavel por armazenar lancamentos e simulacoes de investimento"""
-    """In Portugues: Financa"""
+    """Classe Finance. Classe que possui informações
+    inerentes aos lançamentos de receitas e despesas, tais
+    como periodicidade, vinculação de um lançamento à um determinado
+    usuário e valores de capital.
+    """
 
     # Usuario Associado
     finance_user = models.OneToOneField(User)
@@ -126,12 +137,20 @@ class Finance(models.Model):
     )
 
     def __str__(self):
+        
+        """Método de conversão para
+        o formato string.
+        """
+
         return self.current_value
 
 class InvestmentSimulation(models.Model):
 
-    """Classe responsavel por manter simulacoes de investimento"""
-    """In Portuguese: SimulacaoInvestimento"""
+    """Classe InvestmentSimulation. Classe que possui as informações
+    inerentes às simulações de investimento, tanto no âmbito de
+    Matemática Financeira, como também, na perspectiva de Análise
+    de Retorno de Investimentos.
+    """
 
     # Valor presente do investimento
     present_value = models.DecimalField(_('Present Value'), decimal_places=2, max_digits=12, blank=True, null=True)
@@ -183,13 +202,42 @@ class InvestmentSimulation(models.Model):
     simulation_user = models.ForeignKey(User, verbose_name=_('User'))
 
     def calculate_investment(self):
+        
+        """Método que verifica os parâmetros de simulação
+        passados pelo usuário e dispara o método adequado para
+        o cálculo de um dos elementos pertencentes aos módulos
+        de Engenharia Econômica (Matemática Financeira ou Análise de Retorno de Investimento).
+        """
+
         return SimulationAbstractStrategy.calculate_investment(self)
 
     def __str__(self):
+
+        """Método de conversão para
+        o formato string.
+        """
+
         return str(self.present_value)
 
 class SimulationAbstractStrategy:
+
+    """Classe SimulationAbstractStrategy. Classe Abstrata construída
+    para aplicação dos Padrões de Projeto GoF Comportamentais Template
+    Method e Strategy. Possui a definição da assinatura dos métodos de 
+    validação dos resultados e construção dos passos para as operações 
+    de simulação de investimentos.
+    """
+
     def calculate_investment(simulation_investment):
+
+        """Método que, dado uma instância de InvestmentSimulation, verifica
+        o módulo de Engenharia Econômica para a simulação requerida pelo
+        usuário. No caso de Matemática Financeira, por exemplo, dependendo dos
+        campos preenchidos pelo usuário, poderá ser calculado Valor Presente ou
+        Valor Futuro. No âmbito de Análise de Retorno de Investimento, tem-se o 
+        cálculo do PayBack (Tempo de retorno de um investimento).
+        """
+
         if simulation_investment.simulation_type == InvestmentSimulation.FINANCIAL_MATH:
             if simulation_investment.result_to_discover == InvestmentSimulation.PRESENT_VALUE:
                 result_list = PresentValueStrategy.calculate_steps(simulation_investment)
@@ -208,7 +256,19 @@ class SimulationAbstractStrategy:
     def validate_result(simulation_investment,result): pass
 
 class PresentValueStrategy(SimulationAbstractStrategy):
+
+    """Classe PresentValueStrategy. Classe que realiza 
+    extensão da Classe SimulationAbstractStrategy e formaliza
+    todos os comportamentos no âmbito do cálculo do Valor Presente.
+    """
+
     def calculate_steps(simulation_investment):
+
+        """Método que preenche uma lista com o 
+        resultado de cada iteração do cálculo de
+        Valor Presente.
+        """
+
         result = fv = simulation_investment.future_value
         period = simulation_investment.period_value
         rate = simulation_investment.rate_value/100
@@ -219,6 +279,12 @@ class PresentValueStrategy(SimulationAbstractStrategy):
         return result_list
 
     def validate_result(simulation_investment,result):
+
+        """Método que verifica se último valor da iteração
+        de cálculos do Valor Presente condiz com a aplicação
+        direta da equação para o período fornecido.
+        """
+
         fv = simulation_investment.future_value
         period = simulation_investment.period_value
         rate = simulation_investment.rate_value/100
@@ -226,7 +292,19 @@ class PresentValueStrategy(SimulationAbstractStrategy):
 
 
 class FutureValueStrategy(SimulationAbstractStrategy):
+
+    """Classe FutureValueStrategy. Classe que realiza 
+    extensão da Classe SimulationAbstractStrategy e formaliza
+    todos os comportamentos no âmbito do cálculo do Valor Futuro.
+    """
+
     def calculate_steps(simulation_investment):
+
+        """Método que preenche uma lista com o 
+        resultado de cada iteração do cálculo de
+        Valor Futuro.
+        """
+
         result = pv = simulation_investment.present_value
         period = simulation_investment.period_value
         rate = simulation_investment.rate_value/100
@@ -237,6 +315,12 @@ class FutureValueStrategy(SimulationAbstractStrategy):
         return result_list
 
     def validate_result(simulation_investment,result):
+
+        """Método que verifica se último valor da iteração
+        de cálculos do Valor Futuro condiz com a aplicação
+        direta da equação para o período fornecido.
+        """
+
         pv = simulation_investment.present_value
         period = simulation_investment.period_value
         rate = simulation_investment.rate_value/100
@@ -244,6 +328,12 @@ class FutureValueStrategy(SimulationAbstractStrategy):
 
 
 class PayBackStrategy(SimulationAbstractStrategy):
+
+    """Classe PayBackStrategy. Classe que realiza 
+    extensão da Classe SimulationAbstractStrategy e formaliza
+    todos os comportamentos no âmbito do cálculo do PayBack.
+    """
+
     def calculate_steps(simulation_investment):
     	pv = simulation_investment.present_value
     	pmt = simulation_investment.payment_value
@@ -255,6 +345,12 @@ class PayBackStrategy(SimulationAbstractStrategy):
     	return result_list
 
     def validate_result(simulation_investment,result):
+
+        """Método que implementa o cálculo direto para
+        a verificação do PayBack simples para um determinado
+        investimento.
+        """
+
         pv = simulation_investment.present_value
         pmt = simulation_investment.payment_value
         return pv/pmt == result
@@ -262,9 +358,9 @@ class PayBackStrategy(SimulationAbstractStrategy):
 
 class Category(models.Model):
 
-    """Classe responsavel por registrar uma categoria de receita e despesa"""
-    """Class responsible for registering the registry of revenues and expenses"""
-    """In Portuguese: Categoria"""
+    """Classe Category. Classe que possui as informações inerentes
+    ao mantenimento de categorias de receitas e despesas.
+    """
 
     # Name of category recorded
     # Name of category never should be blank
@@ -285,12 +381,18 @@ class Category(models.Model):
     )
 
     def __str__(self):
+
+        """Método de conversão para
+        o formato string.
+        """
+
         return self.category_name
 
 class Entry(models.Model):
 
-    """Classe responsavel por manter os dados em comuns de receitas e despesas"""
-    """In Portuguese: Lancamento"""
+    """Classe Entry. Classe que possui as informações detalhadas
+    de um determinado lançamento, podendo ser receita ou despesa.
+    """
 
     # Empresa/Organizacao/Entidade fonte da requisicao do Lancamento
     entry_source = models.CharField(_('Entry Source'), max_length=50, blank=True)
@@ -341,4 +443,9 @@ class Entry(models.Model):
     )
 
     def __str__(self):
+
+        """Método de conversão para
+        o formato string.
+        """
+
         return self.entry_description
